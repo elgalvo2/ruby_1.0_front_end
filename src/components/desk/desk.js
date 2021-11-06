@@ -22,7 +22,7 @@ export default function Desk(){
     const admin_main = <Admin_main_page/>
 
     const [side_bar_open, setSide_bar_open] = useState(false);
-    const [anchor, setAnchor] = useState({xs:'none', lg:'none',display:'none'});
+    const [anchor, setAnchor] = useState({xs:'none', lg:'none',md:'none',display:'none'});
     const [session_user, setSessionUser] = useState({});
     const [logedin, setLogedin] =useState(false);
     const [logOutWindow, setLogOutWindow] = useState(false);
@@ -109,7 +109,7 @@ export default function Desk(){
             <Grid item lg={anchor.lg} md={anchor.md} xs={anchor.xs} component={Box} display={anchor.display}>
             <SideBar methods={side_bar_methods}></SideBar>
             </Grid>
-            <Grid item lg={12-anchor.lg} md={12} xs={12}>
+            <Grid item lg={12-anchor.lg} md={12} xs={12-anchor.xs}>
                 <App_Bar methods={methods} props={props}></App_Bar>
                 {directory}</Grid>
         </Grid>

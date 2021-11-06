@@ -1,12 +1,23 @@
 import React from 'react';
 
-import {Typography} from '@material-ui/core'
+import {Typography,Divider} from '@material-ui/core'
 import {viewers} from '../../session/context/manager'
+import Linear from '../LinearProgress';
 
-export default function Front_page(){
+export default function Front_page({error, all_tasks, today_tasks, loading}){
     return(
         <>
-            <Typography>verga</Typography>
+            {(loading)&&<Linear/>}
+            <Typography variant='h2'>Hola!</Typography>
+            <Typography variant = 'h3'>Este es el panel principal del AUO</Typography>
+            <Divider></Divider>
+            <Typography>Desplázate por las ventanas</Typography>
+            <Typography>{error}</Typography>
+            {(!loading)&&<>
+                <Typography>Total De Ordenes: {all_tasks}</Typography>
+                <Typography>Total De Ordenes del dia de hoy: {today_tasks}</Typography>
+            </>}
+            
         </>
     );
 }

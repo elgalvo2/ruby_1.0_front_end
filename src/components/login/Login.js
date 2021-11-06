@@ -5,20 +5,20 @@ import * as authActions from '../../actions/auth';
 import * as message from '../../actions/message';
 import AuthService from '../../services/auth.service';
 import Linear from '../LinearProgress';
-import {isValidEmail} from '../../helpers'
+//import {isValidEmail} from '../../helpers'
 
 const initialValues = {
-    email:"",
+    matricula:"",
     password:"",
 };
 
 const initialErrors = {
-    email:false,
+    matricula:false,
     password:false,
 };
 
 const initialErrorText = {
-    email:'',
+    matricula:'',
     password:"",
 }
 
@@ -44,13 +44,13 @@ export default function Login({open, methods}){
     };
 
     const handleEmailChange = (e)=>{
-        setLog({...log,email:e.target.value});
-        if(!isValidEmail(e.target.value)){
+        setLog({...log,matricula:e.target.value});
+        if(e.target.value.lenght<8){
             let e = errors;
             let m = errorText;
 
-            e.email = true;
-            m.email = 'Email is invalid';
+            e.matricula = true;
+            m.matricula = 'Una matricula contiene al menos 8 números';
 
             setErrors(e);
             setErrorText(m)
@@ -58,8 +58,8 @@ export default function Login({open, methods}){
             let e = errors;
             let m = errorText;
 
-            e.email = false;
-            m.email = '';
+            e.matricula = false;
+            m.matricula = '';
 
             setErrors(e);
             setErrorText(m)
@@ -90,10 +90,10 @@ export default function Login({open, methods}){
     }
 
     const handleLogin = ()=>{
-        if(!errors.email && !errors.password ){
+        if(!errors.matricula && !errors.password ){
             setDisabled(true);
             setSending(true);
-            AuthService.login(log.email, log.password)
+            AuthService.login(log.matricula, log.password)
                 .then((data)=>{
                     setSending(false);
                     setGlobalMessage(JSON.stringify(data));
@@ -140,13 +140,13 @@ export default function Login({open, methods}){
                             {(globalMessage!='')&&<Typography variant = 'body'>{globalMessage}</Typography>}
                             <TextField
                                 margin="dense"
-                                value = {log.email}
-                                error = {errors.email}
-                                helperText={errorText.email}
+                                value = {log.matricula}
+                                error = {errors.matricula}
+                                helperText={errorText.matricula}
                                 onChange= {(e)=>handleEmailChange(e)}
-                                id='email'
-                                label='Email'
-                                type = "text"
+                                id='matricula'
+                                label='Matricula'
+                                type = "number"
                             />
                             <TextField
                                 margin="dense"

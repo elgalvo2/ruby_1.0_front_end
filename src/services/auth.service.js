@@ -4,9 +4,9 @@ import {mutators} from '../session/context/manager'
 const API_URL = "http://localhost:8000/api/1.0/";
 
 class AuthService{
-    login(email, password){
+    login(matricula, password){
         return axios
-            .post(API_URL+"account/login",{email,password})
+            .post(API_URL+"account/login",{matricula,password})
             .then((response)=>{
                     if(response.data.success){
                         console.log('axios working', response.data)
