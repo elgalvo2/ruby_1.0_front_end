@@ -5,7 +5,8 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 
 
-export default function App_Bar({methods, props}) {
+export default function App_Bar({methods, props, session_user}) {
+    
   return (
       <AppBar position="static">
         <Toolbar>
@@ -31,6 +32,7 @@ export default function App_Bar({methods, props}) {
                     </Grid>
                 </Grid>
                 <Grid item lg={2} md={2} xs={2}>
+                    {console.log(props.logedin)}
                    {(props.logedin)?<Grid container direction='row' justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><Button onClick={methods.handleLogout}>Cerrar Sesion</Button></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>}
                 </Grid>
 

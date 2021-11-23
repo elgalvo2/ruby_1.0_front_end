@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+
 import Task_create from './Task_create';
 import Task_edit from './Task_edit';
 import Task_update from './Task_update';
@@ -10,76 +11,82 @@ import App_bar from './common/App_bar';
 import AuoService from '../../services/auo.service';
 
 
-export default function Task_main(){
+
+
+export default function Task_main({setDone, setError, setMessage}){
+
+   
 
     const [today_tasks, setToday_tasks] = useState([]);
     const [to_create, setTo_create] = useState({});
     const [all_tasks, setAll_tasks] = useState([]);
-    const [to_update, setTo_update] = useState({});
+    const [to_update, setTo_update] = useState(null);
     const [to_delete, setTo_delete] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    const [done, setDone]= useState(false);
 
     useEffect(()=>{
         const init = ()=>{
             setLoading(true);
-            try{
+            try{ 
+                
                 AuoService.getAllTasks()
                 .then((data)=>{
                     if(data.data.success){
-                        console.log(data.data.data.tasks)
                         setAll_tasks(data.data.data.tasks);
+                        console.log(data.data.data.tasks)
+                        setDone(true);
+                        setMessage('Ordenes del cargadas correctamente');
+                        
                     }else{
-                        console.log(data)
-                        setError('failed loading all tasks'+data.error);
+                        console.log('Nosuccess')
+                        setDone(true);
+                        setError(true);
+                        setMessage('Error cargando Ordenes... Revisa tus permisos');
                     }
                 }).catch((err)=>{
                     const message = err.message || err;
-                    setError(message);
                     console.log(message);
-                });
+                    setDone(true);
+                    setError(true);
+                    setMessage(message);
+                    
+                }).then(()=>{
                 AuoService.getTodayTask()
                 .then((data)=>{
                     if(data.data.success){
+                        console.log('success today')
                         setToday_tasks(data.data.data.tasks);
+                        setDone(true);
+                        setMessage('Ordenes de hoy cargados correctamente')
                     }else{
-                        setError(data.error);
+                        setDone(true);
+                        setError(true);
+                        setMessage(data.error);
                     }
                 }).catch((err)=>{
                     const message = err.message || err;
-                    setError('failed loading today task'+message);
+                    setDone(true)
+                    setError(true)
+                    setMessage(message);
                     console.log(message);
                 });
-                setLoading(false);
+                
+                }).catch((err)=>{
+                    
+                })
             }catch(err){
-                setError(err);
+                setDone(true);
+                setError(true);
+                setMessage('Ocurrio un error inesperado')
+          
+            }finally{
+                setLoading(false);
             }
         }
         init();
     },[])
 
     const refresh_today_tasks = ()=>{
-        try{
-            AuoService.getAllTasks()
-            .then((data)=>{
-                if(data.data.success){
-                    setToday_tasks(data.data.data.tasks);
-                }else{
-                    setError(data.error);
-                }
-            }).catch((err)=>{
-                const message = err.message || err;
-                setError('failed loading all task'+message);
-                console.log('mesage refresh',message);
-            });
-        }catch(err){
-            setError(err);
-        }
-    }
-
-    const refresh_all_tasks = ()=>{
         try{
             AuoService.getTodayTask()
             .then((data)=>{
@@ -89,14 +96,77 @@ export default function Task_main(){
                     setError(data.error);
                 }
             }).catch((err)=>{
-                const message = err.message || err;
-                setError('failed loading today task'+message);
-                console.log('mesage refresh',message);
+                 
+                setDone(true);
+                setMessage('Ocurrio un error inesperado');
+                setError(true);
             });
         }catch(err){
-            setError(err);
+             
+            setDone(true);
+            setMessage('Ocurrio un error inesperado');
+            setError(true);
         }
     }
+
+    const refresh_all_tasks = ()=>{
+        try{
+            AuoService.getAllTasks()
+            .then((data)=>{
+                if(data.data.success){
+                    setAll_tasks(data.data.data.tasks);
+                }else{
+                    setError(data.error);
+                }
+            }).catch((err)=>{
+                 
+                setDone(true);
+                setMessage('Ocurrio un error inesperado');
+                setError(true);
+            });
+        }catch(err){
+             
+            setDone(true);
+            setMessage('Ocurrio un error inesperado');
+            setError(true);
+        }
+    }
+
+    useEffect(()=>{
+        const toUpdate = (sended_to_update)=>{
+            if(sended_to_update!=null){
+                const folio = sended_to_update.folio;
+                delete sended_to_update.folio;
+                try{
+                    AuoService.updateTask(sended_to_update, folio)
+                    .then((data)=>{
+                        if(data.data.success){
+                            setDone(true);
+                            refresh_today_tasks();
+                            refresh_all_tasks();
+                            setMessage('Oreden Actualizada')
+                        }
+                        else{
+                            setDone(true);
+                            setMessage('No se actualizo la orden... Revisa tus permisos');
+                            setError(true);
+                        }
+                    }).catch((err)=>{
+                        
+                        setDone(true);
+                        setMessage('Ocurrio un error inesperado');
+                        setError(true);
+                    })
+                }catch(err){
+                    
+                    setDone(true);
+                    setMessage('Ocurrio un error inesperado');
+                    setError(true);
+                }
+            }
+        }
+        toUpdate(to_update);
+    },[to_update])
 
     useEffect(()=>{
         const Todelete = (folio)=>{
@@ -108,18 +178,24 @@ export default function Task_main(){
                             setDone(true);
                             refresh_today_tasks();
                             refresh_all_tasks();
-                            setTimeout(()=>{
-                                setDone(false);
-                            },3000);
+                            setMessage('Orden eliminada correctamente')
                         }
                         else{
-                            console.log('ocurrio un error', data.data.error)
+                            setDone(true);
+                            setError(true);
+                            setMessage(data.data.error);
+
                         }
                     }).catch((err)=>{
-                        console.log('error al borrar', err);
+                        setDone(true)
+                        setError(true)
+                        setMessage('Ocurrio un error inesperado')
                     })
                 }catch(err){
-                    console.log('error en service', err);
+                    
+                    setDone(true)
+                    setError(true)
+                    setMessage('Ocurrio un error inesperado')
                 }
             }
         }
@@ -129,28 +205,28 @@ export default function Task_main(){
 
     useEffect(()=>{
         const send_task = ()=>{
+            console.log('to create',to_create)
             if(JSON.stringify(to_create)!="{}"){
                 try{
                     AuoService.createTask(to_create)
                     .then((data)=>{
-                        console.log("to createData",data)
                         if(data.data.success){
                             setDone(true);
-                            refresh_all_tasks();
                             refresh_today_tasks();
-                            setTimeout(()=>{
-                                setDone(false);
-                            },3000);
-                        }else{
-                            
-                            console.log(data.data.error);
-                            
+                            refresh_all_tasks();
+                            setMessage('Orden creada correctamente')
+                        }
+                        else{
+                            setDone(true);
+                            setError(true);
+                            setMessage(data.data.error);
+
                         }
                     }).catch((err)=>{
-                        const message = err.message || err;
-                        setError(message);
-                        console.log(message);
-                    });
+                        setDone(true)
+                        setError(true)
+                        setMessage('Ocurrio un error inesperado')
+                    })
                 }catch(err){
                     console.log(err);
                 };
@@ -165,11 +241,9 @@ export default function Task_main(){
         <>
 
             <App_bar 
-                Front={<Front_page loading = {loading} error={error} all_tasks={all_tasks.length} today_tasks={today_tasks.length}/>} 
-                window1={<Task_create today_tasks={today_tasks} setTo_create={setTo_create} done={done} refresh={refresh_today_tasks} to_delete={setTo_delete}/>} 
-                window2={<Task_edit/>} 
-                window3={<Task_update/>} 
-                window4={<Task_view/>}>
+                Front={<Front_page loading = {loading} all_tasks={all_tasks.length} today_tasks={today_tasks.length}/>} 
+                window1={<Task_create today_tasks={today_tasks} setTo_create={setTo_create} refresh={refresh_today_tasks} to_delete={setTo_delete} setTo_update={setTo_update} />} 
+                window4={<Task_view all_tasks={all_tasks}/>}>
 
             </App_bar>
 

@@ -40,7 +40,7 @@ function a11yProps(index) {
 
 
 
-export default function App_bar({Front,window1, window4}) {
+export default function App_bar({Front,window1}) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -64,8 +64,9 @@ export default function App_bar({Front,window1, window4}) {
           aria-label="full width tabs example"
         >
           <Tab label='Principal' {...a11yProps(0)}/>
-          <Tab label="Crear Orden" {...a11yProps(1)}/>
-          <Tab label="Coleccion Ordenes" {...a11yProps(2)} />
+          <Tab label="Ordenes" {...a11yProps(1)}/>
+   
+          
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -80,9 +81,8 @@ export default function App_bar({Front,window1, window4}) {
         <TabPanel value={value} index={1} dir={'ltr'}>
           {window1}
         </TabPanel>
-        <TabPanel value={value} index={2} dir={'rtl'}>
-        {window4}
-        </TabPanel>
+      
+       
       </SwipeableViews>
     </Box>
   );

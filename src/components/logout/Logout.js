@@ -19,6 +19,7 @@ export default function Logout({open, methods}){
         if(logout){
             handleClose();
             methods.setLogedin(false);
+            window.location.reload(true);
         }
     }
 

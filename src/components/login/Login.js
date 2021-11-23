@@ -95,6 +95,7 @@ export default function Login({open, methods}){
             setSending(true);
             AuthService.login(log.matricula, log.password)
                 .then((data)=>{
+                    console.log(data)
                     setSending(false);
                     setGlobalMessage(JSON.stringify(data));
                     if(data.success){
@@ -164,7 +165,7 @@ export default function Login({open, methods}){
                 <DialogActions>
                     
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleLogin} disabled = {disabled} color = 'primary' variant = 'contained'>Log In</Button>
+                    <Button onClick={handleLogin} disabled = {disabled} color = 'primary' variant = 'contained' style={{backgroundColor:"#348AA7"}}>Log In</Button>
 
                 </DialogActions>
             </Dialog>

@@ -5,13 +5,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
-import CheckBox from '@material-ui/core/checkBox';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import AddToPhotosSharpIcon from '@material-ui/icons/AddToPhotosSharp';
+import {Check, Edit} from '@material-ui/icons';
 
 
 import Dialog from '@material-ui/core/Dialog';
@@ -28,6 +28,10 @@ import TableBody from '@material-ui/core/TableBody';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import Done from './common/Done';
+
+import moduleStyles from './Form.module.css';
+
+import {viewers} from '../../session/context/manager'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +58,7 @@ const initialValues = {
     description:'',
     area:'',
     technician:'',
+    technician_mat:'',
 }
 
 const initial_errors = {
@@ -79,20 +84,53 @@ const initial_errors = {
     }
 }
 
-export default function Task_create({today_tasks, setTo_create, done, refresh, to_delete}){
+
+export default function Task_create({today_tasks, setTo_create, done, refresh, to_delete, setTo_update}){
 
     const [form, setForm] = useState(initialValues);
     const [errors, setErrors] = useState(initial_errors);
-    const [ready,setReady] = useState(false);
     const [next, setNext] = useState(false);
+    const [able_reset, setAble_reset] = useState(false); 
+    const [techIndex, setTechIndex] = useState(0);
+    const [technician_aviables, setTechnicians_aviables] = useState([])
+
+    const [editMode, setEditMode] = useState(false);
+
+    useEffect(()=>{
+        const update_completations= ()=>{
+            const tec = viewers('getTechnicians');
+            tec.push({firstName:"Selecciona un tecnico",matricula:null});
+            tec.reverse();
+            setTechnicians_aviables(tec);
+        }
+        update_completations();
+    },[])
 
     const handleRefresh = ()=>{
-        console.log('refreshingg...')
         refresh();
+    }
+
+    const handleEdit = (el)=>{
+        setEditMode(true);
+        let formEdit ={
+            folio:el.folio,
+            description:el.description,
+            area:el.area,
+            technician:el.technician,
+        }
+        setForm(formEdit);
     }
 
     useEffect(()=>{
         const hable_continue = ()=>{
+            console.log(form);
+
+            if(form===initialValues){
+                setAble_reset(false)
+            }else{
+                setAble_reset(true);
+            }
+            
             if(form.folio.length!=0 && form.technician.length != 0 && form.area.length != 0 && form.description.length !=0){
                 setNext(true);
             }else{
@@ -102,20 +140,50 @@ export default function Task_create({today_tasks, setTo_create, done, refresh, t
         hable_continue();
     },[form])
 
+    const handleSendtoEdit = ()=>{
+        setTo_update(form);
+        handleReset();
+        handleCancel();
+    }
+
+
+
     const handleContinue = ()=>{
+        console.log(form);
         setTo_create(form);
         handleReset();
     }
 
     const handleReset = ()=>{
         setForm(initialValues);
+        setTechIndex(0);
     
     }
 
+    const handleCancel = ()=>{
+        setEditMode(false);
+        handleReset();
+
+    }
 
     const handleDelete = (folio)=>{
         console.log('deleting order: ',folio)
+        handleReset();
         to_delete(folio);
+    }
+    const handleSelect= (e)=>{
+       const num = e.target.value;
+        if(num!=0){
+            setTechIndex(num);
+            setForm({...form,technician:technician_aviables[num].firstName,technician_mat:technician_aviables[num].matricula});
+        }else{
+            setTechIndex(num);
+            setForm({...form,technician:"",technician_mat:null});
+        }
+
+
+        
+        
     }
 
     return(
@@ -134,6 +202,7 @@ export default function Task_create({today_tasks, setTo_create, done, refresh, t
                                 type="text"
                                 error={errors.folio.error}
                                 helperText={errors.folio.message}
+                                disabled={editMode}
                             />
                             
                             <TextField 
@@ -156,64 +225,90 @@ export default function Task_create({today_tasks, setTo_create, done, refresh, t
                                 error={errors.area.error}
                                 helperText={errors.area.message}
                             />
+                            
+                            <Box>
+                            
+                                <TextField 
+                                margin="dense"
+                                value={form.technician}
+                                 
+                                id="tecnico"
+                                label="Tecnico a cargo"
+                                type="text"
+                                
+                            />
+                            
+                            
+                            
                             <Select
+                                style={{paddingTop:'21px'}}
                                 label="tecnico"
                                 id="tecnico"
                                 value={form.technician}
-                                onChange={(e)=>setForm({...form,technician: e.target.value})}
-                                displayEmpty
+                                onChange={(e)=>handleSelect(e)}
+                            
                             >
-                                <MenuItem value="">
-                                    Selecciona tecnico a cargo
-                                </MenuItem>
-                                <MenuItem value={'Rochin'}>Rochin</MenuItem>
-                                <MenuItem value={'Andres'}>Andres</MenuItem>
-                                <MenuItem value={'Rogelio'}>Rogelio</MenuItem>
-                                <MenuItem value={'Sergio'}>Sergio</MenuItem>
-                                <MenuItem value={'Ing. Casillas'}>Ing. Casillas</MenuItem>
+                                {technician_aviables.map((el,index)=>{
+                                    return(
+                                        <MenuItem value={index}>{el.firstName}</MenuItem>
+                                    )
+                                })}
+                               
                             </Select>
-                           
+                           </Box> 
                         </FormControl>
                                 
                     </Grid>
                     <Grid item><Divider></Divider></Grid>
                     <Grid item>
-                        <Button onClick={handleReset}>Limpiar</Button>
-                        <Button onClick={handleContinue} disabled={!next}>Guardar</Button>
+                    {(editMode)?<Button onClick={handleCancel} disabled={!next}>Cancelar</Button>:<Button onClick={handleReset} disabled={!able_reset}>Limpiar</Button>}
+                        {(editMode)?<Button onClick={handleSendtoEdit} disabled={!next}>Guardar Cambios</Button>:<Button onClick={handleContinue} disabled={!next}>Guardar</Button>}
+                        
                     </Grid>
+                    <Box>
+                        {(done)&&<><Done done={done} component={Dialog} open={done}/></>}
+                    </Box>
                 </Grid>
-                <Grid item xl={7} md={7}>
+                
+                <Grid item xl={8} md={8}>
+                    <Box style={{ minHeight:'60vh', maxHeight:'60vh', overflow:'auto', overflowX:'hidden'}}>
                         {(!errors.tasks_loader.error)?
                             <TableContainer >
-                                <Table className={useStyles.table} aria-label='Tareas Del Día'>
+                                <Table stickyHeader className={useStyles.table} aria-label='Tareas Del Día'>
                                     <TableHead component={Paper} variant='outlined'>
                                         <TableRow>
-                                            <TableCell  style={{width:100}} alling='center'>Folio</TableCell>
-                                            <TableCell  style={{width:100}} alling='center'>Área</TableCell> 
-                                            <TableCell  style={{width:100}} alling='center'>Descripción</TableCell>                                       
-                                            <TableCell  style={{width:100}} alling='center'>Encargado</TableCell>
-                                            <TableCell  style={{width:100}} alling='center'>Realizado</TableCell>
+                                            <TableCell  style={{width:160}} aling='center'>Folio</TableCell>
+                                            <TableCell  style={{width:160}} aling='center'>Área</TableCell> 
+                                            <TableCell  style={{width:160}} aling='center'>Descripción</TableCell>                                       
+                                            <TableCell  style={{width:160}} aling='center'>Encargado</TableCell>
+                                            <TableCell  style={{width:60}} aling='center'>Realizado</TableCell>                                            
                                             <TableCell><IconButton onClick={handleRefresh}><RefreshIcon/></IconButton></TableCell>
+                                            <TableCell  style={{width:100}} aling='center'>         </TableCell>
                                         </TableRow>
                                     </TableHead>
                                     
                                         <TableBody>
                                             {today_tasks.map((el, index)=>(
                                                 <TableRow key={el.folio} >
-                                                    <TableCell>
+                                                    <TableCell style={{width:100}}>
                                                         {el.folio}
                                                     </TableCell>
-                                                    <TableCell alling='center'>{el.area}</TableCell>
-                                                    <TableCell alling='center'>{el.description}</TableCell>
+                                                    <TableCell aling='center' style={{width:100}}>{el.area}</TableCell>
+                                                    <TableCell aling='center'>{el.description}</TableCell>
                                                     <Tooltip title={JSON.stringify(el.technician)}>
-                                                    <TableCell alling='center'>{el.technician}</TableCell>
+                                                    <TableCell aling='center'>{el.technician}</TableCell>
                                                     </Tooltip>
                                                     
-                                                    <TableCell alling='center'>{(el.done)?<>Si</>:<>No</>}</TableCell>
+                                                    <TableCell aling='center'>{(el.done)&&<Check/>}</TableCell>
                                                     <TableCell>
                                                     <Tooltip title='Eliminar Orden'>
                                                         <IconButton onClick={()=>handleDelete(el.folio)}><DeleteIcon/></IconButton>
                                                     </Tooltip>
+                                                    </TableCell>
+                                                    <TableCell>
+                                                    <Tooltip title='Editar Orden'>
+                                                        <IconButton onClick={()=>handleEdit(el)}><Edit/></IconButton>
+                                                        </Tooltip>
                                                     </TableCell>
                                                 
                                                 </TableRow>
@@ -222,9 +317,10 @@ export default function Task_create({today_tasks, setTo_create, done, refresh, t
                                 </Table>
                             </TableContainer>:<h3>{errors.tasks_loader.message}</h3>
                         }
+                    </Box>
                 </Grid>
+                
             </Grid>
-            {(done)&&<><Done done={done} component={Dialog} open={done}/></>}
         </>
     );
    

@@ -17,7 +17,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 4, bgcolor:"#FDFFF7" }}>
+        <Box sx={{ p: 4 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -40,7 +40,7 @@ function a11yProps(index) {
 
 
 
-export default function App_bar({Front,window1, window4}) {
+export default function App_bar({Front,window1,window2}) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -53,7 +53,7 @@ export default function App_bar({Front,window1, window4}) {
   };
 
   return (
-    <Box sx={{ bgcolor: '#FDFFF7', width: '100%' }}>
+    <Box sx={{ bgcolor: 'background.paper', width: '100%' }}>
       <AppBar position="static" style={{backgroundColor:"#348AA7"}}>
         <Tabs
           value={value}
@@ -64,8 +64,8 @@ export default function App_bar({Front,window1, window4}) {
           aria-label="full width tabs example"
         >
           <Tab label='Principal' {...a11yProps(0)}/>
-          <Tab label="Crear Orden" {...a11yProps(1)}/>
-          <Tab label="Coleccion Ordenes" {...a11yProps(2)} />
+          <Tab label="Registro de usuario" {...a11yProps(1)}/>
+          <Tab label="Programas mensuales" {...a11yProps(1)}/>
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -80,8 +80,8 @@ export default function App_bar({Front,window1, window4}) {
         <TabPanel value={value} index={1} dir={'ltr'}>
           {window1}
         </TabPanel>
-        <TabPanel value={value} index={2} dir={'rtl'}>
-        {window4}
+        <TabPanel value={value} index={2} dir={'ltr'}>
+          {window2}
         </TabPanel>
       </SwipeableViews>
     </Box>

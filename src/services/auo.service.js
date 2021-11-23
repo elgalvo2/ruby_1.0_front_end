@@ -12,10 +12,11 @@ class AuoService{
     }
 
     getTodayTask(){
+        console.log('get today tasks at: ',API_URL+'tasks/today')
         return axios.get(API_URL+'tasks/today',{headers:authHeader()}); // obtener los task creados este dia
     }
     updateTask(task,folio){
-        return axios.put(API_URL+`tasks/${folio}`,{task},{headers:authHeader});
+        return axios.put(API_URL+`tasks/${folio}`,{task},{headers:authHeader()});
     }
 
     deleteTask(folio){
@@ -25,3 +26,5 @@ class AuoService{
 }
 
 export default new AuoService(); 
+
+
