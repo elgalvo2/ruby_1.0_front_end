@@ -14,9 +14,7 @@ class AuthService{
                     if(response.data.success){
                         mutators('setUser',response.data);
                         axios.get(API_URL+"account/technicians",{headers:authHeader()}).then((data)=>{
-                            console.log('data from technicians', data.data.data)
-                            const res = mutators('setTechnicians',data.data);
-                            console.log('respuesta mutter', res);
+                            mutators('setTechnicians',data.data);            
                         })
                         
                     }

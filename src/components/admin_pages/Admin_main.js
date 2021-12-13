@@ -46,7 +46,7 @@ export default function Admin_main({setDone, setError, setMessage}){
 
   
 
-  useEffect()
+  
 
 
     return(

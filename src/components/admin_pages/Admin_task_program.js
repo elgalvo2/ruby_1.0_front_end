@@ -16,18 +16,7 @@ export default function Admin_task_program(){
 
     return (
         <>
-
-            <Grid container direction='column'>
-                <Grid item>
-                     
-                </Grid>
-                <Grid item>
-                    <Button>Limpiar</Button>
-                    <Button>Agregar</Button>
-                </Grid>
-            </Grid>
-        
-        
+            <h1>Hola, Aqui se crea un nuevo programa</h1>
         
         </>
     )

@@ -46,7 +46,6 @@ export function mutators(mutattor, mutter){
                 return{}
             }else{
                 localStorage.setItem('technicians',JSON.stringify(mutter));
-                console.log('view technicians after save',viewers('getTechnicians'))
                 return true;
             }
         case 'removeTechnicians':

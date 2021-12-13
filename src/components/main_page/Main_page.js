@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box} from '@material-ui/core'
+import {Box, Button} from '@material-ui/core'
 
 
 
@@ -18,6 +18,7 @@ export default function Main_page(){
             <h2>Este es el panel principal del departamento de conservación</h2>
 
             </Box>
+
             
             
         </>

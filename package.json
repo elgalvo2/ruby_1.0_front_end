@@ -11,6 +11,8 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
     "dotenv": "^8.2.0",
+    "downloadjs": "^1.4.7",
+    "file-saver": "^2.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
@@ -26,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && aws s3 sync build s3://react-page-example --profile deploy-react --delete --exclude '*.js.map'"
+    "deploy": "npm run build && aws s3 sync build s3://www.smart-signature.com --profile deploy-react --delete --exclude '*.js.map'"
   },
   "eslintConfig": {
     "extends": [
