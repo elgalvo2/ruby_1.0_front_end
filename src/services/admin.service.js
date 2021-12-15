@@ -104,8 +104,8 @@ class AdminService{
         }).catch((err)=>console.log(err))
     }
 
-    get_pdf(name){
-        return axios.get(API_URL+'pdf_generator/',{headers:{'Content-Type':"multipart/form-data"},responseType:"blob"})
+    get_pdf(name,type){
+        return axios.get(API_URL+`pdf_generator/${type}`,{headers:{'Content-Type':"multipart/form-data"},responseType:"blob"})
         .then((data)=>{
             console.log(data)
             window.saveAs(data.data,`orden_compra_${name}.pdf`)

@@ -119,9 +119,9 @@ export default function Task_main({setDone, setError, setMessage}){
         })
     }
 
-    const download_pdf = (name) =>{
+    const download_pdf = (name,type) =>{
         setReadyPdf(false)
-        AdminService.get_pdf(name)
+        AdminService.get_pdf(name,type)
         .then((data)=>{
             if(data){
                 setReadyPdf(true);
@@ -138,7 +138,8 @@ export default function Task_main({setDone, setError, setMessage}){
         generar_pdf,
         readyPdf,
         download_pdf,
-        setReadyPdf
+        setReadyPdf,
+        send_topdf
     }
         
     

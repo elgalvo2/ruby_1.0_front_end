@@ -24,39 +24,182 @@ const context={
         guarderia:{
             "circunscripcion":["26","Sinaloa"],
             "localidad":"Culiacán",
-            "unidad_informacion":"000001",
-            "centro_costos":"000001",
-            "domicilio_inmu":"Bldv. Enrique Cabrera ####",
+            "unidad_informacion":"266301",
+            "centro_costos":"320200",
+            "domicilio_inmu":"C. Ruperto L. Paliza #154 NTE. Col Centro C.P. 80000",
             "telefono_inmu":"750-20-60",
             "jefe_conservacion":"Ing. Jose Luis Casillas Bovio",
-            "director":"Sr. director de guarderia",
-            "administrador":"Sra. administradora de guarderia",
+            "director":"Lic. Vianney Paredes Castro",
+            "administrador":"- - - - - - ",
         },
         deportivo:{
             "circunscripcion":["26","Sinaloa"],
             "localidad":"Culiacán",
-            "unidad_informacion":"333001",
-            "centro_costos":"1223001",
-            "domicilio_inmu":"Bldv. Enrique Cabrera ####",
+            "unidad_informacion":"269901",
+            "centro_costos":"50200",
+            "domicilio_inmu":"Vialidad Sector Poniente SN Central Milenium",
             "telefono_inmu":"750-80-99",
             "jefe_conservacion":"Ing. Jose Luis Casillas Bovio",
-            "director":"Sr. director del deportivo",
-            "administrador":"Sra. administradora de deportivo",
+            "director":"Dr. Cesar Noe Angulo Parra",
+            "administrador":" - - - - - -  - -",
+        },
+        pericos:{
+            "circunscripcion":["26","Sinaloa"],
+            "localidad":"Pericos",
+            "unidad_informacion":"262409",
+            "centro_costos":"142902",
+            "domicilio_inmu":"Av. Revolución S/N Col Centro C.P. 80900",
+            "telefono_inmu":"750-80-99",
+            "jefe_conservacion":"Ing. Jose Luis Casillas Bovio",
+            "director":"Dr. Enrique Medina Limas",
+            "administrador":" - - - - - -  - -",
+        },
+        tienda:{
+            "circunscripcion":["26","Sinaloa"],
+            "localidad":"Culiacán",
+            "unidad_informacion":"265901",
+            "centro_costos":"142902",
+            "domicilio_inmu":"C. Miguel Hidalgo #994 OTE. Col. Las Vegas C.P. 80090",
+            "telefono_inmu":"750-80-99",
+            "jefe_conservacion":"Ing. Jose Luis Casillas Bovio",
+            "director":"Lic. Hector Javier Gomez Ramirez",
+            "administrador":" - - - - - -  - -",
         }
     },
     listado_partidas:{
-        12345678:"comer pollo",
-        87654321:"comer tacos",
+        2502:"Subrogacion de servicios, para muebles y equipos moviles",
+        2506:"Subrogacion de servicios para inmuebles y equipos fijos",
+        2517:"Refacciones y materiales para conservación",
+        2503:"Contratos consolidados"
     },
     listado_especialidades:{
-        "01":"articulos de limpieza",
-        "02":"articulos de aseo",
-        "03":"articulos diversos"
+        "01":"Obra Civil",
+        "02":"Equipo Medico",
+        "03":"Electricidad",
+        "04":"Casa de Máquinas",
+        "05":"Aire Acondicionado",
+        "06":"Lavanderia",
+        "07":"Cocina",
+        "08":"Tratamiento de Agua",
+        "09":"Equipo de Telecomunicación",
+        "10":"Equipos de Seguridad y Saneamiento Ambiental",
+        "11":"Sistemas de Conservación, Máquinas de Oficinas",
+        "12":"Equipos de Transportacion",
+        "13":"Mobiliario",
+        "14":"Equipos y Herrramienta",
     },
     listado_subes:{
-        "01":"comida para caballo",
-        "02":"limpiar baños",
-        "03":"limpiar consultorios",
+        "01":{
+            "01":"Plomeria",
+            "02":"Herreria y Canceleria",
+            "03":"Pintura",
+            "04":"Acabados",
+            "05":"Carpinteria",
+            "06":"Cerrajeria",
+            "07":"Vidrieria",
+            "08":"Señalización",
+            "09":"Jardineria"
+        },
+        "02":{
+            "01":"Rayos X",
+            "02":"Electronica",
+            "03":"Laboratorio",
+            "04":"Consulta Especialidades",
+            "05":"Medicina Nuclear",
+        },
+        "03":{
+            "01":"Subestacion",
+            "02":"Sistemas de Energia",
+            "03":"Tableros y Controles de Equipos",
+            "04":"Instalaciones y Alumbrado",
+            "05":"Motores electricos",
+            "06":"Sistemas de proteccion"
+        },
+        "04":{
+            "01":"Distribución de Fluidos y Energéticos",
+            "02":"Generadores de Vapor y agua caliente",
+            "03":"Almacenamiento de Energéticos",
+            "04":"Almacenamientoy distribución de fluidos medicinales",
+            "05":"Equipos de incineración",
+            "06":"Protecciones anticorrosivas",
+        },
+        "05":{
+            "01":"Aire Acondicionado",
+            "02":"Refrigeración",
+            "03":"Calefacción",
+            "04":"Vetilación y extensión"
+        },
+        "06":{
+            "01":"Lavado",
+            "02":"Secado",
+            "03":"Planchado",
+            "04":"De Acondicionamiento",
+            "05":"Complementarios",
+        },
+        "07":{
+            "01":"Almacenamiento y distribución",
+            "02":"Para preparación de alimentos",
+            "03":"Para cocción de alimentos",
+            "04":"De lavado de alimentos",
+            "05":"Complementarios",
+        },
+        "08":{
+            "01":"Recepcion y distribución de agua",
+            "02":"Tratamiento de agua de uso general",
+            "03":"Tratamiento de agua de desecho",
+            "04":"Materiales y productos químicos",
+
+        },
+        "09":{
+            "01":"Telefonia",
+            "02":"Radiocomunicación",
+            "03":"Intercomunicaciones",
+            "04":"Sistemas de teleinformativa",
+            "05":"Sistemas de video y proyección",
+            "06":"Sistema de audio",
+            "07":"Enlaces de comunición",
+            "08":"Teleseñalización",
+            "09":"Canalización y tableros"
+        },
+        "10":{
+            "01":"Limpieza",
+            "02":"Desechos sólidos",
+            "03":"Sistemas de control de fauna nociva urbana",
+            "04":"Contaminación atmosférica",
+            "05":"Protección de técnicos de conservación y contratados",
+            "06":"Evacuación de inmueble",
+            "07":"Instalaciones de equipo de incendio",
+            "08":"Sistemas de apoyo ante siniestros",
+        },
+        "11":{
+            "01":"Máquinas de escribir eléctricas",
+            "02":"Máquinas de escribir mecánicas",
+            "03":"Máquinas calculadoras",
+            "04":"Computadoras",
+            "05":"Relojes checadores",
+            "06":"Grabadoras",
+            "07":"Máquinas copiadoras",
+            "08":"Máquinas registradoras",
+            "09":"Etiquetadoras y fechadores",
+            "10":"Engargolados",
+            "11":"Cortadoras",
+        },
+        "12":{
+            "01":"Elevadores de tipo convencional",
+            "02":"Montacargas",
+            "03":"Escaleras eléctricas",
+            "04":"Funicular"
+        },
+        "13":{
+            "01":"De linea",
+            "02":"Diseño",
+            "03":"Muebles sanitarios"
+        },
+        "14":{
+            "01":"Herramientas electromecánicas",
+            "02":"Diagnostico y calibración",
+            "03":"Laboratorio y supervision",
+        }
     }
 }
 
@@ -90,6 +233,8 @@ const initialValues = {
     "texto_antecedente":"",
     "texto_consideraciones":"",
     "importe_texto":"",
+    "subtotal_text":"",
+    "hora_acta":"",
     "importe_iva":0,
     "importe_no_iva":0,
     "iva":0,
@@ -122,6 +267,15 @@ const articuloInitialValue={
         "importe":0,
     }
 
+const serviceInitialValue = {
+    "partida":"",
+    "descripcion":"",
+    "unidad":"SERV",
+    "cantidad":0,
+    "precio_unitario":0,
+    "importe":0,
+}
+
 
 export default function Bill_create({open, closeFunction,methods}){
 
@@ -129,21 +283,35 @@ export default function Bill_create({open, closeFunction,methods}){
     const [articulo, setArticulo] = useState(articuloInitialValue);
     const [inmue, setInmue] = useState([1,0,0]);
     const [ready, setReady] = useState(false);
+    const [isService, setIsService]=useState(false);
+
+
+    const handleDownload = ()=>{
+        if(isService){
+            methods.download_pdf(form.orden_id,"service_order")
+        }else{
+            methods.download_pdf(form.orden_id,"purchase_order")
+        }
+    }
 
     const handleSend = ()=>{
         var total = 0;
         var subtotal = 0;
         var iva = 0;
         let fecha_fin = "";
+
         form.articulos.map((art)=>{
             subtotal += art.importe;
             total += art.importe*1.16;
             iva += art.importe*.16;
         })
+    
+
 
         var dat = form;
 
         const letra = NumeroALetras(total);  
+        const subtotal_texto = NumeroALetras(subtotal)
         console.log("letra",letra)      
         const date = form.fecha_inicio.split('/');
         var dia = date[0];
@@ -152,9 +320,9 @@ export default function Bill_create({open, closeFunction,methods}){
         fecha_fin = new Date(año,mes-1,dia)
         fecha_fin.setDate(fecha_fin.getDate()+parseInt(form.plazo_entrega));
         var fecha_entrega = new Date(fecha_fin).toISOString();
-         fecha_entrega = fecha_entrega.split('T')[0];
-         fecha_entrega = fecha_entrega.split('-');
-         fecha_entrega = fecha_entrega.reverse();
+        fecha_entrega = fecha_entrega.split('T')[0];
+        fecha_entrega = fecha_entrega.split('-');
+        fecha_entrega = fecha_entrega.reverse();
 
 
         dat.fecha_termino=fecha_entrega[0]+'/'+fecha_entrega[1]+'/'+fecha_entrega[2];
@@ -162,10 +330,27 @@ export default function Bill_create({open, closeFunction,methods}){
         dat.importe_iva = total.toFixed(2);
         dat.iva = iva.toFixed(2);
         dat.importe_texto = letra;
+        dat.subtotal_text = subtotal_texto;
         setForm(dat)        
         console.log('form nuevo',form);
         const order = setFormatter(form)
+        console.log(order)
         methods.generar_pdf(order);
+    }
+
+    const handleOrderType = (e)=>{
+        const string = e.target.value[0]+e.target.value[1];
+
+        if(string == "os" || string == 'OS'){
+            setIsService(true);
+            setArticulo(serviceInitialValue)
+
+        }else{
+            setIsService(false);
+            setArticulo(articuloInitialValue)
+        }
+
+        setForm({...form,orden_id:e.target.value.toUpperCase()})
     }
 
     const setFormatter = (dat)=>{
@@ -198,10 +383,12 @@ export default function Bill_create({open, closeFunction,methods}){
             "uso":dat.uso,
             "texto_antecedente":dat.texto_antecedente,
             "texto_consideraciones":dat.texto_consideraciones,
+            "subtotal_text":dat.subtotal_text,
             "importe_texto":dat.importe_texto,
             "importe_iva":dat.importe_iva,
             "importe_no_iva":dat.importe_no_iva,
             "iva":dat.iva,
+            "hora_acta":dat.hora_acta,
             "fecha_inicio":dat.fecha_inicio,
             "fecha_termino":dat.fecha_termino,
             "partida_presu":dat.partida_presu,
@@ -212,11 +399,26 @@ export default function Bill_create({open, closeFunction,methods}){
             "plazo_entrega":dat.plazo_entrega
         }
 
+        
+
+        var order_type="";
+
+        if(isService){
+            order_type = "service_order";
+            
+        }else{
+            order_type = "purchase_order";
+        }
+
+
+        console.log("servicios", dat.articulos)
+        console.log("order_data", order_data)
 
         return{
             unit_data,
             provider_data,
             order_data,
+            order_type
         }
     }
 
@@ -350,6 +552,7 @@ export default function Bill_create({open, closeFunction,methods}){
         setInmue([1,0,0])
         setForm(initialValues);
         setArticulo(articuloInitialValue);
+        setIsService(false);
         setReady(false);
         methods.setReadyPdf(false)
        
@@ -366,7 +569,13 @@ export default function Bill_create({open, closeFunction,methods}){
         let art = form.articulos;
         let gart  = [...art,articulo];
         setForm({...form,articulos:gart});
-        setArticulo(articuloInitialValue);
+        if(isService){
+            setArticulo(serviceInitialValue);
+
+        }else{
+            setArticulo(articuloInitialValue);
+
+        }
     }
 
    
@@ -376,10 +585,10 @@ export default function Bill_create({open, closeFunction,methods}){
 
     return (
         <> 
-            <Dialog open={open} onClose={()=>closeFunction(false)} aria-labelledby="modal-title" maxWidth='md' fullWidth={true} className={styles.page}>
+            <Dialog open={open} onClose={()=>closeFunction(false)} aria-labelledby="modal-title" maxWidth='lg' fullWidth={true} className={styles.page}>
 
                 <DialogTitle className={styles.page_content}>
-                    <Typography variant='h3' className={styles.titulo}>Formulario orden de compra</Typography>
+                    <Typography variant='h3' className={styles.titulo}>{(isService)?<>Formulario Orden de Servicio</>:<>Formulario orden de compra</>}</Typography>
                 </DialogTitle>
                 <DialogContent  className={styles.page_content}>
                     <>
@@ -504,7 +713,7 @@ export default function Bill_create({open, closeFunction,methods}){
                                             <label>Numero de Orden:</label>
                                             <input
                                             value={form.orden_id}
-                                            onChange={(e)=>setForm({...form,orden_id:e.target.value})}></input>
+                                            onChange={(e)=>handleOrderType(e)}></input>
                                             <div className={styles.clearFix}></div>
                                         </div>
                                     
@@ -533,6 +742,13 @@ export default function Bill_create({open, closeFunction,methods}){
                                             onChange= {(e)=>setForm({...form,uso:e.target.value.toUpperCase()})}></textarea>
                                             <div className={styles.clearFix}></div>
                                         </div>
+                                        {(isService)&&<div>
+                                            <label>Hora para acta de entrega:</label>
+                                            <input
+                                                value={form.hora_acta}
+                                                onChange={(e)=>setForm({...form,hora_acta:e.target.value})}
+                                            ></input>
+                                            </div>}
                                     
                                     </div>
 
@@ -637,6 +853,14 @@ export default function Bill_create({open, closeFunction,methods}){
                                             value={articulo.unidad}
                                              onChange= {(e)=>setArticulo({...articulo,unidad:e.target.value.toLowerCase()})}></input>
                                         </div>
+                                        {(isService)&&
+                                            <div>
+                                            <label>Partida:</label>
+                                            <input 
+                                            value={articulo.partida}
+                                            onChange= {(e)=>setArticulo({...articulo,partida:e.target.value})}></input>
+                                        </div>
+                                        }
                                         <div>    
                                             <label>Descripcion: </label>
                                             <textarea 
@@ -659,6 +883,8 @@ export default function Bill_create({open, closeFunction,methods}){
                                             value={articulo.precio_unitario}
                                             onChange= {(e)=>setArticulo({...articulo,precio_unitario:e.target.value})}></input>
                                         </div>
+
+                                        
                                     
                                         <p>Importe: $<span>{articulo.precio_unitario*articulo.cantidad}</span></p>
                                         <button className={styles.agregar} onClick={handleAgregar} >Agregar</button>
@@ -667,6 +893,7 @@ export default function Bill_create({open, closeFunction,methods}){
                                 <div className={styles.articulos_tabla}>
                                     <div>
                                             <p>Relacion</p>
+                            
                                             <p>Descripcion</p>
                                             <p>Unidad</p>
                                             <p>Cantidad</p>
@@ -677,7 +904,7 @@ export default function Bill_create({open, closeFunction,methods}){
                                     {form.articulos.map((art, index)=>(
                                         <div className = {styles.art_tabla}>
                                             <p>{index+1}</p>
-                                            <p>{art.descripcion}</p>
+                                            <p>{(isService)?<>{art.partida + "-"+ art.descripcion}</>:<>{art.descripcion}</>}</p>
                                             <p>{art.unidad}</p>
                                             <p>{art.cantidad}</p>
                                             <p>$ {art.precio_unitario}</p>
@@ -704,21 +931,27 @@ export default function Bill_create({open, closeFunction,methods}){
                     <Button className={styles.cancelar} onClick={()=>closeFunction(false)}>Cancelar</Button>
                     <Button onClick={handleReset}>Limpiar</Button>
 
-                    <Tooltip title={"crear pdf orden de compra: "+form.orden_id}>
-                    <Button className={styles.crear_button} disabled={!ready} onClick={handleSend}>Crear Orden</Button>
-                    </Tooltip>
+                    {(ready)&&<>
+                        
+                        <Tooltip title={"crear pdf orden de compra: "+form.orden_id}>
+                        <Button className={styles.crear_button} disabled={methods.send_topdf} onClick={handleSend}>Crear Orden</Button>
+                        </Tooltip>
 
+                    </>}
+                    
                     {
                     (methods.readyPdf)&&
                     <>
                     <Tooltip title={"DEscargar pdf: "+form.orden_id}>
-                    <IconButton  onClick={()=>methods.download_pdf(form.orden_id)}><SaveIcon/>
+                    <IconButton  onClick={handleDownload}><SaveIcon/>
                     </IconButton>
                     </Tooltip>
                     </>
                     }
 
                 </DialogActions>
+
+                
                 
 
                 
