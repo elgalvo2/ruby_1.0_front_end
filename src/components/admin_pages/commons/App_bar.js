@@ -40,7 +40,7 @@ function a11yProps(index) {
 
 
 
-export default function App_bar({Front,window1,window2}) {
+export default function App_bar({Front,window1,window2, window3}) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -66,6 +66,8 @@ export default function App_bar({Front,window1,window2}) {
           <Tab label='Principal' {...a11yProps(0)}/>
           <Tab label="Registro de usuario" {...a11yProps(1)}/>
           <Tab label="Programas mensuales" {...a11yProps(1)}/>
+          <Tab label="Registro de proveedor" {...a11yProps(3)}/>
+
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -82,6 +84,9 @@ export default function App_bar({Front,window1,window2}) {
         </TabPanel>
         <TabPanel value={value} index={2} dir={'ltr'}>
           {window2}
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={'ltr'}>
+          {window3}
         </TabPanel>
       </SwipeableViews>
     </Box>

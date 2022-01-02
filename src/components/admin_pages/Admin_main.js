@@ -5,6 +5,7 @@ import Admin_register_user from './Admin_register_user'
 import Front_page from './Front_page'
 import App_bar from './commons/App_bar';
 import Admin_task_program from './Admin_task_program'
+import Main_register_provider from './register_provider/main_register_provider'
 
 
 import AdminService from '../../services/admin.service';
@@ -56,6 +57,7 @@ export default function Admin_main({setDone, setError, setMessage}){
                 Front={<Front_page/>} 
                 window1={<Admin_register_user to_signup={setTo_signup}/>} 
                 window2={<Admin_task_program/>}
+                window3={<Main_register_provider/>}
                 >
             </App_bar>
 
