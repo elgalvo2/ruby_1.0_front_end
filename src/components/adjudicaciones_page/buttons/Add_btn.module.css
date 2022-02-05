@@ -1,0 +1,21 @@
+.button{
+    width: 100%;
+    height: 100%;
+    background-color: #394867;
+    /* border-radius: 100%; */
+    border: 2px solid #E5E5E5;
+    box-shadow: 1px 1px 1px grey, 2px 2px 2px grey, 3px 3px 3px grey;
+    font-size: 56px;
+    line-height: 66px;
+    color: #E5E5E5;
+    transition: all 300ms;
+}
+
+.button:hover{
+    background-color: #2f3c56;
+    cursor: pointer;
+}
+
+.button:active{
+    box-shadow: inset 1px 1px 1px black;
+}

@@ -1,0 +1,5 @@
+.layout{
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    margin-top: 20px;
+}

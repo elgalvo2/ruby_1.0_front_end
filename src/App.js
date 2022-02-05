@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import Desk from './components/desk/desk';
+import New_desk from './components/new_desk/New_desk';
 import {createTheme} from '@material-ui/core/styles'
 
 
 
 
+
 function App() {
+
+
 
   const theme = createTheme({
     typography :{
@@ -19,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Desk></Desk>
+      <New_desk></New_desk>
     </>
   );
 }

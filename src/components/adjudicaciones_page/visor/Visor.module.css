@@ -1,0 +1,31 @@
+.visor{
+    margin-top: 10px;
+    display: flex;
+    min-height: 420px;
+}
+
+.campo{
+    width:350px;
+    margin: 0px auto;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: #eaeaeec7;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.campo>p{
+    margin: 0px auto;
+    margin-top: 10px;
+}
+
+.visor>div:first-child{
+    border-radius: 10px 0px 0px 10px;
+}
+
+.visor>div:last-child{
+    border-radius: 0px 10px 10px 0px;
+}
+
+button{
+    border: none;
+}

@@ -1,0 +1,29 @@
+
+
+.header{
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr;
+    margin-top: 30px;
+}
+/*
+}
+
+
+*/
+.filter{
+    margin-left: 40px;
+    
+}
+.search{
+   margin-left: 20px;
+}
+.add{
+    margin-top: -10px;
+} 
+.direct{
+    margin-left : 40px;
+}
+.visor{
+    margin-top: 20px;
+
+}

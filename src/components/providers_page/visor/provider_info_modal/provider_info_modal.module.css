@@ -1,0 +1,15 @@
+.layout{
+    display: grid;
+    grid-template-rows: repeat(1fr,6);
+    
+}
+
+.Field{
+    display: grid;
+    grid-template-columns: 6fr 1fr 6fr;
+}
+
+.divider.divider{
+    height: 45px;
+    margin-top:10px ;
+}

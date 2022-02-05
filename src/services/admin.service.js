@@ -78,14 +78,13 @@ recibe objeto
 
 class AdminService{
     register(user){
-        console.log(user.role)
         if(user.role=="TECNICO"){
             return axios.post(API_URL+"account/signup",{user},{headers:authHeader()})
             .then((data)=>{
                 axios.get(API_URL+"account/technicians",{headers:authHeader()}).then((data)=>{
-                    console.log('data from getting technicians', data.data.data)
+                    
                     const res = mutators('setTechnicians',data.data);
-                    console.log('respuesta mutter', res);   
+                    
                 })
                 return data;
             }).catch((err)=>{
