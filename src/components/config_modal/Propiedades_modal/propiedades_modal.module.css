@@ -1,0 +1,64 @@
+.layout{
+    width: 90%;
+    margin: 0px auto;
+    padding-top: 20px;
+    display: grid;
+    grid-template-rows: repeat(1fr,8) 2fr;
+    align-content: center;
+    justify-content: center;
+}
+
+.layout>div{
+    display: grid;
+    
+}
+
+.localidadTel{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50px;
+}
+
+.localidadTel>div{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+.checkBoxes{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+.cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+}
+
+.checkBoxes>label{
+    column-span: 1;
+}
+
+.datosUnidad{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+.button{
+    margin: 0px auto;
+    margin-top: 20px;
+    width: 80%;
+    height: 30px;
+    box-shadow: 1px 1px 1px grey, 2px 2px 2px grey;
+    transition: all 500ms;
+}
+
+.button:hover{
+    box-shadow: 1px 1px 1px black, 2px 2px 2px black;
+}
+
+.button:active{
+    box-shadow: inset 1px 1px 1px grey, 2px 2px 2px grey;
+}

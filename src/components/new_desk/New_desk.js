@@ -5,6 +5,7 @@ import {default as MainAdjudicaciones} from '../adjudicaciones_page/Main'
 import {default as MainProviders} from '../providers_page/Main';
 import Session_info from '../login/session_info/Session_info'
 import styles from './new_desk.module.css'
+import Config_modal from '../config_modal/Config_modal';
 
 
 
@@ -24,7 +25,7 @@ export default function New_desk() {
     const pages = [<MainAdjudicaciones/>, <MainProviders/>, 'documentos']
     return (
         <>
-      
+            <Config_modal/>
             {(loging?<Login_page methods={handleLogin}/>:<New_nav_bar pages={pages} className={styles.nav} methods={loginMethods}/>)}
             
         </>

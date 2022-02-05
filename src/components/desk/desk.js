@@ -17,12 +17,6 @@ import {Typography,Grid, Box, Paper} from '@material-ui/core'
 
 export default function Desk(){
 
-
-    
-    
-
-    
-
     const [side_bar_open, setSide_bar_open] = useState(false);
     const [anchor, setAnchor] = useState({xs:'none', lg:'none',md:'none',display:'none'});
     const [session_user, setSessionUser] = useState({});

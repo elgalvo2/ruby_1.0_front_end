@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import New_desk from './components/new_desk/New_desk';
+import Desk from './components/desk/desk'
 import {createTheme} from '@material-ui/core/styles'
 
 
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <>
-      <New_desk></New_desk>
+      <Desk></Desk>
     </>
   );
 }
