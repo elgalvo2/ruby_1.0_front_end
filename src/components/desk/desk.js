@@ -3,6 +3,7 @@ import Task_main from '../tasks/Task_main'
 import Main_page from '../main_page/Main_page'
 import Technicians_main_page from '../technicians_page/Technicians_main';
 import Admin_main_page from '../admin_pages/Admin_main';
+import {default as Adjudicaciones_main} from '../new_desk/New_desk'
 
 import AuthService from '../../services/auth.service'
 
@@ -28,10 +29,22 @@ export default function Desk(){
     const [done, setDone] = useState(false);
     const [message, setMessage]= useState('');
 
+    const adjudicaciones_methods={
+        setError,
+        setDone,
+        setMessage,
+    }
+
     const tasks_main_page = <Task_main setError={setError} setDone={setDone} setMessage={setMessage}/>
     const main = <Main_page setError={setError} setDone={setDone} setMessage={setMessage}/>
     const tech_main = <Technicians_main_page setError={setError} setDone={setDone} setMessage={setMessage}/>
     const admin_main = <Admin_main_page setError={setError} setDone={setDone} setMessage={setMessage}/>
+    const adjudicaciones_main = <Adjudicaciones_main setError={setError} setDone={setDone} setMessage={setMessage}/>
+
+
+
+
+
 
 
     const [directory, setDirectory] = useState(main);
@@ -61,9 +74,10 @@ export default function Desk(){
     useEffect(()=>{
         const changePage = ()=>{
             if(index===0){setDirectory(main)};
-            if(index===1){setDirectory(tasks_main_page)};
-            if(index===2){setDirectory(tech_main)};
-            if(index===3){setDirectory(admin_main)};
+            if(index===1){setDirectory(adjudicaciones_main)};
+            if(index===2){setDirectory(tasks_main_page)};
+            if(index===3){setDirectory(tech_main)};
+            if(index===4){setDirectory(admin_main)};
         }
         changePage();
     },[index])

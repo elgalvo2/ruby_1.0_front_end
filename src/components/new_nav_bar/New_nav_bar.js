@@ -59,9 +59,9 @@ export default function New_nav_bar({pages=['Adjudicaciones', 'Proveedores', 'Do
   return (
     <Box sx={{ bgcolor: 'background.paper', width: '100%' }}>
       <AppBar position="static" className={styles.app_bar}>
-        <div className={styles.logo}>
+        {/* <div className={styles.logo}>
             <p>Signature</p>
-        </div>
+        </div> */}
         <Tabs
           value={value}
           onChange={handleChange}
@@ -76,9 +76,9 @@ export default function New_nav_bar({pages=['Adjudicaciones', 'Proveedores', 'Do
           <Tab label="Documentos" {...a11yProps(1)} className={styles.tab}/>
             
         </Tabs>
-        <div className={styles.sesion}>
+        {/* <div className={styles.sesion}>
             <SessionInfo methods={methods.setlogin}/>
-        </div>
+        </div> */}
         <div className={styles.clearFix}></div>
       </AppBar>
       <SwipeableViews

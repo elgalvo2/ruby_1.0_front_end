@@ -7,26 +7,36 @@ import Session_info from '../login/session_info/Session_info'
 import styles from './new_desk.module.css'
 import Config_modal from '../config_modal/Config_modal';
 
+import PropertyService from '../../services/properties.service'
 
 
 
-export default function New_desk() {
+
+
+export default function New_desk({ setError, setDone, setMessage}){
 
     const [loging, setlogin] = useState(true)
+
 
     const handleLogin = (isActive) => {
         setlogin(isActive);
     }
 
-    const loginMethods = {
-        setlogin,
+    const methods = {
+        setError,
+        setDone,
+        setMessage,
     }
 
-    const pages = [<MainAdjudicaciones/>, <MainProviders/>, 'documentos']
+    const pages = [<MainAdjudicaciones methods={methods}/>, 
+    <MainProviders />, 
+    'documentos']
     return (
         <>
-            <Config_modal/>
-            {(loging?<Login_page methods={handleLogin}/>:<New_nav_bar pages={pages} className={styles.nav} methods={loginMethods}/>)}
+            {/* <Config_modal/> */}
+            {/* {(loging?<Login_page methods={handleLogin}/>:<New_nav_bar pages={pages} className={styles.nav} methods={loginMethods}/>)} */}
+            <New_nav_bar pages={pages} className={styles.nav} methods={methods}/>
+           
             
         </>
     )

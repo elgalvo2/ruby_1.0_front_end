@@ -9,6 +9,9 @@ import Filter_visor from './filter_visor/Filter_visor';
 import Modal_adjudicacion from './modal_adjudicacion/Modal_adjudicacion'
 import Crear_adjudicacion_modal from './modal_crear_adjudicacion/Crear_adjudicacion_modal';
 import Modal_crear_directa from './modal_crear_directa/Modal_crear_directa';
+import Bill_create from '../tasks/bill_create';
+
+import AdminService from '../../services/admin.service';
 
 import { Filter } from '@material-ui/icons';
 import { Tooltip } from '@material-ui/core';
@@ -21,10 +24,14 @@ import { Tooltip } from '@material-ui/core';
 //     )
 // }
 
-export default function Main() {
+export default function Main({methods}) {
     const [openCreateAd, setOpenCreateAd] = useState(false)
     const [openAdModal, setOpenAdModal] = useState(false)
     const [openModalCrearDiracta, setOpenModalCrearDirecta] = useState(false)
+
+    const [data_to_pdf, setData_to_pdf] =useState({});
+    const [readyPdf, setReadyPdf] =useState(false);
+    const [send_topdf, setSend_topdf] = useState(false);
 
     //Modal window drivers
 
@@ -40,7 +47,41 @@ export default function Main() {
         setOpenCreateAd(isOpen);
     }
 
+    //Create pdf drivers
+    
+    const generar_pdf = (dat)=>{
+        setSend_topdf(true);
+        console.log(dat);
+        AdminService.send_order_topdf(dat)
+        .then((data)=>{
+            if(data){
+                methods.setDone(true);
+                methods.setMessage('Pdf creada correctamente y listo para descargar')
+                setReadyPdf(true)
+                setSend_topdf(false);
+            }else{
+                methods.setDone(true);
+                methods.setError(true);
+                methods.setMessage("No se cargo el pdf");
+                methods.setSend_topdf(false);
+            }
+            
+        })
+    }
 
+    const download_pdf = (name,type) =>{
+        setReadyPdf(false)
+        AdminService.get_pdf(name,type)
+        .then((data)=>{
+            if(data){
+                setReadyPdf(true);
+            }else{
+                methods.setDone(true);
+                methods.setError(true);
+                methods.setMessage("Error al descargar el pdf");
+            }
+        })
+    }
 
     //Wired methods
 
@@ -52,8 +93,14 @@ export default function Main() {
         handleOpenAdModal,
     }
 
+    
     const createDirectaMethods = {
-        handleOpenModalCrearDirecta,
+        setData_to_pdf,
+        generar_pdf,
+        readyPdf,
+        download_pdf,
+        setReadyPdf,
+        send_topdf
     }
 
     return (
@@ -90,7 +137,7 @@ export default function Main() {
         
             <Crear_adjudicacion_modal open={openCreateAd} methods={createAdMethods} />
             <Modal_adjudicacion open={openAdModal} methods={visorMethods} />
-            <Modal_crear_directa open={openModalCrearDiracta} methods={createDirectaMethods} />
+            <Bill_create open={openModalCrearDiracta} closeFunction={handleOpenModalCrearDirecta} methods={createDirectaMethods} />
 
         </>
     )

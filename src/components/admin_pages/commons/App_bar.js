@@ -66,7 +66,7 @@ export default function App_bar({Front,window1,window2, window3}) {
           <Tab label='Principal' {...a11yProps(0)}/>
           <Tab label="Registro de usuario" {...a11yProps(1)}/>
           <Tab label="Programas mensuales" {...a11yProps(1)}/>
-          <Tab label="Registro de proveedor" {...a11yProps(3)}/>
+          <Tab label="Registro de propiedad" {...a11yProps(3)}/>
 
         </Tabs>
       </AppBar>
