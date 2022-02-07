@@ -63,10 +63,10 @@ export default function App_bar({Front,window1,window2, window3}) {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label='Principal' {...a11yProps(0)}/>
-          <Tab label="Registro de usuario" {...a11yProps(1)}/>
+          {/* <Tab label='Principal' {...a11yProps(0)}/> */}
+          <Tab label="Registro de usuario" {...a11yProps(0)}/>
           <Tab label="Programas mensuales" {...a11yProps(1)}/>
-          <Tab label="Registro de propiedad" {...a11yProps(3)}/>
+          <Tab label="Registro de propiedad" {...a11yProps(2)}/>
 
         </Tabs>
       </AppBar>
@@ -76,16 +76,16 @@ export default function App_bar({Front,window1,window2, window3}) {
         onChangeIndex={handleChangeIndex}
       >
         
-        <TabPanel value={value} index={0} dir={'ltr'}>
+        {/* <TabPanel value={value} index={0} dir={'ltr'}>
           {Front}
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={'ltr'}>
+        </TabPanel> */}
+        <TabPanel value={value} index={0} dir={'ltr'}>
           {window1}
         </TabPanel>
-        <TabPanel value={value} index={2} dir={'ltr'}>
+        <TabPanel value={value} index={1} dir={'ltr'}>
           {window2}
         </TabPanel>
-        <TabPanel value={value} index={3} dir={'ltr'}>
+        <TabPanel value={value} index={2} dir={'ltr'}>
           {window3}
         </TabPanel>
       </SwipeableViews>

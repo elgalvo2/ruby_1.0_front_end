@@ -50,15 +50,24 @@
     margin: 0px auto;
     margin-top: 20px;
     width: 80%;
-    height: 30px;
-    box-shadow: 1px 1px 1px grey, 2px 2px 2px grey;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
     transition: all 500ms;
 }
 
-.button:hover{
+.button > button{
+    
+    transition: all 500ms;
     box-shadow: 1px 1px 1px black, 2px 2px 2px black;
 }
 
-.button:active{
+
+.button > button:hover{
+    box-shadow: inset 1px 1px 1px grey, 2px 2px 2px grey;
+    cursor: pointer;
+}
+
+.button > button:active{
     box-shadow: inset 1px 1px 1px grey, 2px 2px 2px grey;
 }

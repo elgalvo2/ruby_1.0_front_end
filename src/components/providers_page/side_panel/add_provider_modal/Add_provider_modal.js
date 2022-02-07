@@ -6,7 +6,7 @@ import {Dialog, DialogActions, DialogTitle, DialogContent, Button} from '@materi
 
 
 
-export default function Add_provider_modal({open=false, methods}){
+export default function Add_provider_modal({open=false, methods, form, disableSend}){
     return(
         <>
             <Dialog
@@ -17,13 +17,14 @@ export default function Add_provider_modal({open=false, methods}){
                 >
                 <DialogTitle>Registrar nuevo proveedor</DialogTitle>
                 <DialogContent>
-                    <Add_provider_form/>
+                    {form}
                 </DialogContent>
                 <DialogActions>
                     <Button
                         onClick={()=>methods.handleOpenAddModal(false)}
                     >Cancelar</Button>
-                    <Button>Registrar</Button>  
+                    <Button onClick={()=>methods.handleReset()}>Limpiar</Button>
+                    <Button disabled={disableSend} onClick={()=>methods.setSend(true)}>Registrar</Button>  
                 </DialogActions>
             </Dialog>
         </>

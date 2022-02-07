@@ -1,0 +1,15 @@
+.main{
+    margin:-10px auto;
+    width: 1370px;
+    height: 800px;
+    background-image: url('../../imss_main.jpg');
+    position: absolute;
+}
+
+.main>p{
+    color: whitesmoke;
+    position: relative;
+    top: 30px;
+    left: 40px;
+    font-size: 26px;
+}

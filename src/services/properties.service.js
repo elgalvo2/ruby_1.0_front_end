@@ -5,7 +5,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 class PropertyService{
     register(property){
-        return axios.post(API_URL+'properties/setProperty',{property},{headers:authHeader()})
+        return axios.post(API_URL+'properties/setProperty',property,{headers:authHeader()})
         .then((data)=>{
             if(data.data.success){
                 return data.data

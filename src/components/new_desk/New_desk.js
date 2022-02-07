@@ -29,7 +29,7 @@ export default function New_desk({ setError, setDone, setMessage}){
     }
 
     const pages = [<MainAdjudicaciones methods={methods}/>, 
-    <MainProviders />, 
+    <MainProviders methods={methods}/>, 
     'documentos']
     return (
         <>

@@ -5,7 +5,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 class ProviderService{
     register(provider){
-        return axios.post(API_URL+'providers/register_provider',{provider},{headers:authHeader()})
+        return axios.post(API_URL+'providers/register_provider',provider,{headers:authHeader()})
         .then((data)=>{
             if(data.data.success){
                 return data.data
@@ -58,4 +58,4 @@ class ProviderService{
     }
 
 }
-export default ProviderService();
+export default new ProviderService();

@@ -1,5 +1,5 @@
 .layout{
-    width: 850px;
+    width: 1050px;
     height: 500px;
     display: grid;
     grid-template-columns: 1fr 2fr;

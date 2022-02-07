@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styles from './visor.module.css'
 import Provider_card from './provider_card/Provider_card'
 
@@ -8,6 +8,11 @@ export default function Visor({providers=[{
     razon_social: 'na fdlsk jfklsdfja djf;la kf dkasjhd lka jkfasdjkl fahklsd',
     giro: 'na lfkjasd fkljasdlf kjasdfl jk fjksdhf klsdjhfkla f'
 }],methods}){
+    
+    console.log(providers)
+    
+
+
     return(
         <div className={styles.layout}>
             <div className={styles.tableHeader}>
