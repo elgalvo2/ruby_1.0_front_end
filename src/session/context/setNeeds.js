@@ -4,7 +4,7 @@ function setNeeds(mutter){
     if(viewers('getNeeds')===mutter){
         return {}
     }else{
-        localStorage.setItem('Needs',JSON.stringify(mutter))
+        localStorage.setItem('needs',JSON.stringify(mutter))
         return true
     }
 }

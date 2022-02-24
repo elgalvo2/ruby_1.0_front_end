@@ -1,0 +1,29 @@
+body{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: darkblue;
+}
+
+.desk{
+    margin: 0px auto;
+    margin-top: 200px;
+    width: 350px;
+    height: 450px;
+    background-color: gray;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.desk>div>p{
+    text-align: center;
+}
+
+.form{
+    width: 98%;
+    height: 90%;
+    margin: 0px auto;
+    
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 20px;
+}

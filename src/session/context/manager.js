@@ -2,6 +2,9 @@
 import setNeeds from './setNeeds'
 import setProperties from './setProperties'
 import setProviders from './setProviders'
+import setOperators from './setOperators';
+import setAreas from './setAreas';
+import setTasks from './setTasks';
 
 export function viewers(getter){
     let session = JSON.parse(localStorage.getItem('session'));
@@ -9,6 +12,11 @@ export function viewers(getter){
     let providers = JSON.parse(localStorage.getItem('providers'))
     let properties = JSON.parse(localStorage.getItem('properties'))
     let needs = JSON.parse(localStorage.getItem('needs'))
+    let operators = JSON.parse(localStorage.getItem('operators'))
+    let areas = JSON.parse(localStorage.getItem('areas'))
+    let tasks = JSON.parse(localStorage.getItem('tasks'))
+
+
     switch(getter){
         case 'getUser':
             return session.data.user_;
@@ -28,6 +36,12 @@ export function viewers(getter){
             return properties.data
         case 'getNeeds':
             return needs.data
+        case 'getOperators':
+            return operators.data
+        case 'getAreas':
+            return areas.data
+        case 'getTasks':
+            return tasks.data
         default:
             return {};
     }
@@ -89,6 +103,30 @@ export function mutators(mutattor, mutter){
                 data:[]
             }
             localStorage.setItem('properties',JSON.stringify(propert))
+            return true
+        case 'setOperators':
+            return setOperators(mutter)
+        case 'removeOperators':
+            let opera = {
+                data:[]
+            }
+            localStorage.setItem('operators',JSON.stringify(opera))
+            return true
+        case 'setAreas':
+            return setAreas(mutter)
+        case 'removeAreas':
+            let area = {
+                data:[]
+            }
+            localStorage.setItem('areas',JSON.stringify(area))
+            return true
+        case 'setTasks':
+            return setTasks(mutter)
+        case 'removeTask':
+            let task = {
+                data:[]
+            }
+            localStorage.setItem('tasks',JSON.stringify(task))
             return true
         default:
             return {}

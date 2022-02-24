@@ -4,7 +4,7 @@ import { Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/
 import Propiedades_modal from "./Propiedades_modal/Propiedades_modal";
 
 
-export default function Config_modal({ methods, props }) {
+export default function Config_modal({ methods, props, data=[{inmueble:'prueba1'},{inmueble:'prueba2'}] }) {
 
     const formMethods = {
         setProperty: methods.handleToSetProperty,
@@ -13,14 +13,15 @@ export default function Config_modal({ methods, props }) {
         setSend: methods.setSend,
     }
 
-    const {data} = props.data
+    
 
+    
    
 
     const { propertyData, propertyOwner, send } = props;
 
 
-
+    console.log('data',data)
 
 
     return (

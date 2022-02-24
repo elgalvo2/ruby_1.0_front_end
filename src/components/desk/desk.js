@@ -13,6 +13,9 @@ import Login from '../login/Login';
 import Logout from '../logout/Logout';
 import {viewers} from '../../session/context/manager'
 import {Typography,Grid, Box, Paper} from '@material-ui/core'
+import Inmueble_form from '../bill_create/form/Inmueble_form';
+import Provider_form from '../bill_create/form/Provider_form';
+import Ejemplo_sofi from '../bill_create/form/ejemplo_sofi';
 
 
 
@@ -156,7 +159,7 @@ export default function Desk(){
 
     return(
         <>
-        <Grid container direction='row' justifyContent='flex-start'>
+         <Grid container direction='row' justifyContent='flex-start'>
             <Grid item lg={12-anchor.lg} md={12} xs={12-anchor.xs}>
                 <Box style={{overflox:'scroll'}}>
                 <Desk2 methods={methods} props={props} directory = {directory} ></Desk2>
@@ -165,7 +168,11 @@ export default function Desk(){
         </Grid>
         {(logWindow)&&<Login open={logWindow} methods ={methods}></Login>}
         {(logOutWindow)&&<Logout open={logOutWindow} methods={methods}/>}
+         
+         {/* <Inmueble_form/> */}
+         <Provider_form/>
         
+    
         
         </>
     )

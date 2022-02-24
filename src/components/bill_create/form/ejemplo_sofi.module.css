@@ -1,0 +1,14 @@
+.layout{
+    width:800px;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgba(255, 235, 205, 0.904);
+    border: 1px solid black;
+}
+
+.layout>div{
+    text-align: center;
+    color: orange;
+    border:1px solid black
+}

@@ -7,7 +7,15 @@ let pay = {
     }
 } 
 
+let areas = {
+    data:[]
+}
+
 let technicians = {
+    data:[]
+}
+
+let operators = {
     data:[]
 }
 
@@ -23,6 +31,10 @@ let needs = {
     data:[]
 }
 
+let tasks = {
+    data:[]
+}
+
 let options = {
     data:[]
 }
@@ -31,9 +43,18 @@ let options = {
 export default function initSession(){
     if(!localStorage.getItem('session')){
         localStorage.setItem('session', JSON.stringify(pay));
-    }  
+    } 
+    if(!localStorage.getItem('tasks')){
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    } 
+    if(!localStorage.getItem('areas')){
+        localStorage.setItem('areas', JSON.stringify(areas));
+    } 
     if(!localStorage.getItem('technicians')){
         localStorage.setItem('technicians',JSON.stringify(technicians));
+    }
+    if(!localStorage.getItem('operators')){
+        localStorage.setItem('operators',JSON.stringify(operators));
     }
     if(!localStorage.getItem('providers')){
         localStorage.setItem('providers',JSON.stringify(providers));

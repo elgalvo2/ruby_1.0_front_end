@@ -44,6 +44,8 @@ export default function Admin_main({ setDone, setError, setMessage }) {
   const [propertyOwner, setPropertyOwner] = useState([1, 0]);
   
   let [data] = useGetProperties();
+
+  console.log('pre data',data.data)
   
   const handleSelectOwner = (event) => {
     
@@ -122,7 +124,7 @@ export default function Admin_main({ setDone, setError, setMessage }) {
         Front={<Front_page />}
         window1={<Admin_register_user to_signup={setTo_signup} />}
         window2={<Admin_task_program />}
-        window3={<Config_modal props={{ propertyData, propertyOwner, data, send }} methods={{ handleToSetProperty, handleSelectOwner,setSend,handleResetForm }} />}
+        window3={<Config_modal props={{ propertyData, propertyOwner, send }} data={data.data} methods={{ handleToSetProperty, handleSelectOwner,setSend,handleResetForm }} />}
       >
       </App_bar>
 
