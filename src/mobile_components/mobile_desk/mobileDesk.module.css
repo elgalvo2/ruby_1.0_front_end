@@ -1,29 +1,25 @@
-body{
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-color: darkblue;
-}
-
-.desk{
+.layout{
+    /* display: grid;
+    grid-template-rows: 1fr 15fr; */
     margin: 0px auto;
-    margin-top: 200px;
-    width: 350px;
-    height: 450px;
-    background-color: gray;
-    display: grid;
-    grid-template-rows: 1fr 5fr;
 }
 
-.desk>div>p{
-    text-align: center;
+.appBar{
+    height: fit-content;
+}
+.visor{
+    margin-top: 95px;
 }
 
-.form{
-    width: 98%;
-    height: 90%;
-    margin: 0px auto;
-    
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    row-gap: 20px;
+.butto.butto{
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    border-radius: 100%;
+    background-color: #00a5e5;
+    color: #f1f1e6;
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+    box-shadow: 1px 1px 1px #ccc, 2px 2px 2px #ccc, 3px 3px 3px #ccc, 4px 4px 4px #ccc, 5px 5px 5px #ccc;
 }

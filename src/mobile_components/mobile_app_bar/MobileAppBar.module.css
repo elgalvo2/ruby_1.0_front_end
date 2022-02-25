@@ -1,0 +1,16 @@
+.appBar{
+    width: 100%;
+    height: fit-content;
+}
+
+.toolba.toolba{
+    background-color: #344a53;
+    height: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.IconBu.IconBu{
+    position: absolute;
+    right: 20px;
+}

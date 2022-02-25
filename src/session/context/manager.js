@@ -23,7 +23,7 @@ export function viewers(getter){
         case "getSessionState":
             const today = new Date().getTime();
             const diference = today - session.data.session_created_date;
-            if(diference>14499000){
+            if(diference>1449900){
                 return false
             }else{
                 return true

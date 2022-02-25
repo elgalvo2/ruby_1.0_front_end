@@ -10,7 +10,7 @@ class AuthService{
         return axios
             .post(API_URL+"account/login",{matricula,password})
             .then((response)=>{
-                    console.log('entra aqui')
+                    
                     if(response.data.success){
                         mutators('setUser',response.data);
                         axios.get(API_URL+"account/technicians",{headers:authHeader()}).then((data)=>{
@@ -18,6 +18,7 @@ class AuthService{
                         })
                         
                     }
+                
                 return response.data;
             }).catch((err)=>{
                 return err

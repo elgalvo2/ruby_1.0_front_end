@@ -1,0 +1,42 @@
+.form{
+    width: 80%;
+    height: 420px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    
+    background-color: #f1f1e6;
+    position: absolute;
+    top:100px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px grey, 2px 2px 2px grey, 3px 3px 3px grey;
+}
+
+.header{
+    margin: 0px auto;
+    margin-top: 65px;
+}
+.fields{
+    width: 90%;
+    margin: 0px auto;
+}
+
+.field.field{
+     
+    border:1px solid #344a53;
+    margin-top: 30px;
+}
+
+.buttons{
+    margin: 0px auto;
+    width: 90%;
+}
+
+.butt.butt{
+    background-color: #344a53;
+    color:#f1f1e6;
+    width: 100%;
+}

@@ -27,9 +27,23 @@ class Task_v2Service {
         .then((data)=>{
             if(data.data.success){
                 mutators('setTasks',data.data)
-                return data
+                return data.data
             }
-            return data
+            return data.data
+        }).catch((err)=>{
+            return err.message
+        })
+    }
+    createTask(info){
+        return axios.post(API_URL+'task_v2/create',info,{headers:authHeader()})
+        .then((data)=>{
+            if(data.data.success){
+                const tasks = viewers('getTasks')
+                const updatedTasks = tasks.concat(info)
+                mutators('setTasks',updatedTasks)
+                return data.data
+            }
+            return data.data
         }).catch((err)=>{
             return err.message
         })
