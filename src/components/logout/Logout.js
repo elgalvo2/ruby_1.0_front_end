@@ -6,6 +6,7 @@ import * as message from '../../actions/message';
 import AuthService from '../../services/auth.service';
 import Linear from '../LinearProgress';
 import {isValidEmail} from '../../helpers'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 
 export default function Logout({open, methods}){

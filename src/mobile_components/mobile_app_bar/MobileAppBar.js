@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './MobileAppBar.module.css'
-import { AppBar, IconButton, Menu, MenuItem, MenuList, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, IconButton, Menu, MenuItem, MenuList, Toolbar, Typography} from '@material-ui/core'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 
@@ -15,7 +15,7 @@ export default function MobileAppBar({methods}) {
                     </Typography>
                     <IconButton
                         className={styles.IconBu}
-                        onClick={()=>methods.sessionClose()}
+                        onClick={()=>methods.setOpenCloseSesionDialog(true)}
                         size='medium'
                         edge='end'
                         color='inherit'

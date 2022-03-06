@@ -19,16 +19,19 @@ export function viewers(getter){
 
     switch(getter){
         case 'getUser':
+            console.log('entra aqui')
+            console.log('session.data:', session.data)
             return session.data.user_;
         case "getSessionState":
             const today = new Date().getTime();
             const diference = today - session.data.session_created_date;
-            if(diference>1449900){
+            if(diference>14499000){
                 return false
             }else{
                 return true
             }
         case 'getTechnicians':
+            
             return technicians.data
         case 'getProviders':
             return providers.data
@@ -41,6 +44,7 @@ export function viewers(getter){
         case 'getAreas':
             return areas.data
         case 'getTasks':
+            
             return tasks.data
         default:
             return {};

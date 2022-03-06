@@ -67,6 +67,7 @@ export default function initSession(){
     }
 
     console.log('technicias aviables', localStorage.getItem('technicians'));
-    console.log('index session',localStorage.getItem('session'));
+    // console.log('index session',localStorage.getItem('session'));
+    // console.log('tasks aviables', localStorage.getItem('tasks'))
 };
 

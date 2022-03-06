@@ -99,7 +99,8 @@ export default function Task_create({today_tasks, setTo_create, done, refresh, t
     useEffect(()=>{
         const update_completations= ()=>{
             const tec = viewers('getTechnicians');
-            tec.push({firstName:"Selecciona un tecnico",matricula:null});
+            console.log(tec)
+            // tec.push({firstName:"Selecciona un tecnico",matricula:null});
             tec.reverse();
             setTechnicians_aviables(tec);
         }

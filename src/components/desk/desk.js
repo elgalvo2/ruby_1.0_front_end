@@ -170,7 +170,7 @@ export default function Desk(){
         {(logOutWindow)&&<Logout open={logOutWindow} methods={methods}/>}
          
          {/* <Inmueble_form/> */}
-         <Provider_form/>
+         {/* <Provider_form/> */}
         
     
         

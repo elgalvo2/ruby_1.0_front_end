@@ -1,44 +1,47 @@
 import axios from 'axios'
-import {mutators} from '../session/context/manager'
+import { mutators } from '../session/context/manager'
 import authHeader from './auth-header';
+import globalContextService from './globalContext.service';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-class AuthService{
-    login(matricula, password){
+class AuthService {
+    login(matricula, password) {
 
         return axios
-            .post(API_URL+"account/login",{matricula,password})
-            .then((response)=>{
-                    
-                    if(response.data.success){
-                        mutators('setUser',response.data);
-                        axios.get(API_URL+"account/technicians",{headers:authHeader()}).then((data)=>{
-                            mutators('setTechnicians',data.data);            
-                        })
-                        
+            .post(API_URL + "account/login", { matricula, password })
+            .then((response) => {
+                if (response.data.success) {
+                    mutators('setUser', response.data);
+                    const {role} = response.data.data.user_;
+                    const {context} = response.data
+                    if(role==='ADMIN' || role==='SUDO' || role==='AUO'){
+                        globalContextService.adminContext(context)
+                    }else if(role==='TECNICO'){
+                        globalContextService.technicianContext(context)
+                    }else if(role==='AUO'){
+                        globalContextService.auoContext(context)
+                    }else if(role==='OPERADOR'){
+                        globalContextService.operatorContext(context)
                     }
-                
+                }
+
                 return response.data;
-            }).catch((err)=>{
+            }).catch((err) => {
                 return err
             });
     }
 
-    logout(){
-        
-        const loggedout = mutators('removeUser',"");
-        if(loggedout){
-            let removed = mutators('removeTechnicians',"");
-            
-            if(removed){
-                return true
-            }else{
-                return false
-            }
-        
-        }
-        return false
+    logout() {
+
+        mutators('removeUser', "");
+        mutators('removeTechnicians', "")
+        mutators('removeTasks', "")
+        mutators('removeNeeds', "")
+        mutators('removeProperties', "")
+        mutators('removeOperators', "")
+        mutators('removeAreas', "")
+        return true
     }
 }
 

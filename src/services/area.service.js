@@ -10,12 +10,24 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 class AreaService {
     registerArea(data) {
-        const area_info = data
-        return axios.post(API_URL + 'areas/setArea', { data }, { headers: authHeader() })
+        
+        return axios.post(API_URL + 'areas/setArea', data, { headers: authHeader() })
             .then((data) => {
                 if (data.data.success) {
-                    const areas = viewers('getAreas').concat(area_info)
-                    mutators('setAreas', areas)
+                    const {_id,inOperation,name, operator_id, program,technician_id} = data.data.data
+                    const areas = viewers('getAreas')
+                    const update_context = {data:[...areas,
+                        {_id,
+                        inOperation,
+                        name,
+                        operator_id,
+                        program,    
+                        technician_id
+                        }
+                    ]}
+
+
+                    mutators('setAreas', update_context)
                     return data.data
                 } else {
                     return data.data

@@ -2,7 +2,7 @@ import React from "react";
 import styles from './sessionInitForm.module.css'
 import {Button,Typography,TextField} from '@material-ui/core'
 
-export default function SessionInitForm({methods, props={matricula:'',password:''}}){
+export default function SessionInitForm({methods, props={matricula:'',password:''}, error=false,errorMessage='Error iniciando sesion'}){
     let height = window.innerHeight;
     let width = window.innerWidth
 
@@ -37,6 +37,7 @@ export default function SessionInitForm({methods, props={matricula:'',password:'
                         type='password'
                         variant='outlined'
                     />
+                    {(error)&&<p className={styles.errorMessage}>{errorMessage}</p>}
                 </div>
                 <div className={styles.buttons}>
                     <Button className={styles.butt} onClick={()=>methods.sessionInit()}>Iniciar Sesion</Button>

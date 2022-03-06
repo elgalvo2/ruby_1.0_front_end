@@ -5,18 +5,18 @@ import DeleteIcon from '@material-ui/icons/Delete'
 
 
 
-export default function TaskCard({cardData={description:'ksdjfklsfdlkjasd askldjsadj asldkjas ldananana',date:'##/##/####',folio:"##-####-##"}}) {
+export default function TaskCard({methods,cardData={description:'descripcion por defecto',created_date:'##/##/####',folio:"##-####-##",area_name:'area'}}, key) {
     return (
-        <div className={styles.taskCard}>
-            <div className={styles.fecha}>
+        <div className={styles.taskCard} >
+            <div className={styles.fecha} onClick={()=>methods.handleMarkDone(true,cardData._id)}>
+                <p>{cardData.area_name}</p>
                 <p>{cardData.folio}</p>
-                <p>{cardData.date}</p>
             </div>
-            <div className={styles.descripcion}>
+            <div className={styles.descripcion} onClick={()=>methods.handleMarkDone(true,cardData._id)}>
                 <p>{cardData.description}</p>
             </div>
             <div className={styles.edit}>
-                <IconButton>
+                <IconButton onClick={()=>methods.removetask(cardData._id)}>
                     <DeleteIcon/>
                 </IconButton>
             </div>

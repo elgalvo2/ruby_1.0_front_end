@@ -48,6 +48,7 @@ import Notification from './Notification';
 
 import Grid from '@material-ui/core/Grid';
 import moduleStyles from './Estilos.module.css'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 180;
 
@@ -193,7 +194,7 @@ export default function Desk2({props, methods, directory}) {
                 
                 <Grid item>
                 {(props.logedin)?<Grid container direction='row'
-                 justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><Button onClick={methods.handleLogout} size='small' className={clsx(classes.close_session_button)}>Cerrar Sesion</Button></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>} 
+                 justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><IconButton onClick={methods.handleLogout} size='small' className={clsx(classes.close_session_button)}><ExitToAppIcon/></IconButton></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>} 
                 </Grid> 
 
             </Grid>
