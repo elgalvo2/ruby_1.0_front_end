@@ -7,6 +7,9 @@ export function useManageTasks(logedin, newTask) {
     const [tasks, setTasks] = useState([])
     const [openSendMarkDone, setOpenMarkDone] = useState(false)
     const [markDoneId, SetMarkDoneId] = useState('')
+    const [folio,setFolio] = useState('')
+    const [openDeleteTask, setOpenDeleteTask] = useState(false)
+    const [deleteTaskID, setDeleteTaskId] = useState('')
 
     useEffect(() => {
         const getTasks = () => {
@@ -14,77 +17,39 @@ export function useManageTasks(logedin, newTask) {
                 const { _id } = viewers('getUser')
                 const areas = viewers('getAreas')
                 const tasks = viewers('getTasks')
-                
-                // const readyTasks = tasks.map((task)=>{
-                //     const task_area = areas.map(function(area){
-                //             console.log('area',area)
-                //             // if(area._id == task.area_id){
-                //             //     return area
-                //             // }
-                //         })
-                    
-                //     if(task_area){
-                //         task.area_name = task_area.name
-                //         return task
-                //     }else{
-                //         task.area_name = 'UNKNOW'
-                //         return task
-                //     }
-                // })
-                const readyTasks = areas.map((area)=>{
-                    var areaTask = tasks.filter(function(task){
-                        return task.area_id === area._id;
-                    })
-                    var namedTasks = areaTask.map((task)=>{
-                        task.area_name = area.name
-                        return task
-                    }) 
-                    return namedTasks
-
+                console.log(tasks)
+                var UnDoneTasks = tasks.filter(function(task){
+                    return task.done === false
                 })
 
-
-                setTasks(tasks)
-                // task_v2Service.getTasksByCreator(_id)
-                //     .then((data) => {
-                //         if (data.success) {
-                //             const unDoneTasks = data.data.filter(function (task) {
-                //                 return task.done === false
-                //             })
-                //             const readyTasks = unDoneTasks.map((task)=>{
-                //                 const task_area = areas.find(function(area){
-                //                     return area._id = task._id
-                //                 })
-                                
-                //                 if(task_area){
-                //                     task.area_name = task_area.name
-                //                     return task
-                //                 }else{
-                //                     task.area_name = 'UNKNOW'
-                //                     return task
-                //                 }
-                //             })
-                //             console.log('reade tasks',readyTasks)
-                            
-                //             setTasks(readyTasks)
-                //         }
-                //     })
+                console.log('UnDoneTasks',UnDoneTasks)
+                
+                var namedTasks = UnDoneTasks.map((task)=>{
+                    const area_name = areas.find(function(area){
+                        return area._id == task.area_id 
+                    })
+                    console.log('area_name',area_name)
+                    task.area_name = area_name.name
+                    return task
+                })
+                console.log('namedTasks',namedTasks)
+                setTasks(UnDoneTasks)
             } else {
                 setTasks([])
             }
         }
         getTasks()
-    }, [logedin, newTask,openSendMarkDone])
+    }, [logedin, newTask, openSendMarkDone])
 
-    const removetask = (taskid) => {
-        task_v2Service.deleteTask(taskid)
+    const removetask = () => {
+        task_v2Service.deleteTask(deleteTaskID)
             .then((data) => {
                 if (data.success) {
-
                     const filtered_tasks = tasks.filter(function (task) {
-                        return task._id !== taskid
+                        return task._id !== deleteTaskID
                     })
                     setTasks(filtered_tasks)
+                    handleDeleteTask(false,'','')
                 }
             })
     }
@@ -98,25 +63,32 @@ export function useManageTasks(logedin, newTask) {
                         return tasks._id !== markDoneId
                     })
                     setTasks(filtered_tasks)
-                    setOpenMarkDone(false)
-                    SetMarkDoneId('')
+                    handleMarkDone(false,'','')
                 }
             })
     }
 
-    const handleMarkDone = (open, id = '') => {
-        if (open) {
-            setOpenMarkDone(true)
+    const handleMarkDone = (open, id = '', folio) => {
+        
+            setOpenMarkDone(open)
             SetMarkDoneId(id)
-        } else {
-            setOpenMarkDone(false)
-            SetMarkDoneId('')
-        }
+            setFolio(folio)
+        
 
 
     }
 
-    return [tasks, openSendMarkDone, markDoneId, removetask, markAsDone, handleMarkDone]
+    const handleDeleteTask = (open, id = '',folio) => {
+
+        setDeleteTaskId(id)
+        setOpenDeleteTask(open)
+        setFolio(folio)
+        
+
+
+    }
+
+    return [tasks, openSendMarkDone, markDoneId, removetask, markAsDone, handleMarkDone,handleDeleteTask,openDeleteTask,folio]
 
 
 

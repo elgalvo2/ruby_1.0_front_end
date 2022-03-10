@@ -11,7 +11,7 @@ export function useSessionForm(initalValue={}){
 
     useEffect(()=>{
         const newSession=()=>{
-            
+            // authService.logout()
             const sessionAlive = viewers('getUser')
             if(sessionAlive._id){
                 setLogedIn(true)

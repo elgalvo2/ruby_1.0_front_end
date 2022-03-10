@@ -17,7 +17,7 @@ export function useManageUserForm(
         confirm_password: '',
         role: '',
         form: ''
-    }
+    },setDone,SetError,SetMessage
 ) {
     const [form, setForm] = useState(initialValues);
     const [error, setError] = useState(initialError);
@@ -83,12 +83,24 @@ export function useManageUserForm(
     const handleSend = () => {
         
         if(readyToSend){
+            
             AdminService.register(form)
             .then((data)=>{
                 console.log(data)
                 if(data.success){
+                    setDone(true)
+                    setError(false)
+                    SetMessage('Usuario creado correctamente')
                     handleClean()
+                }else{
+                    setDone(true)
+                    setError(true)
+                    SetMessage(data.error)
                 }
+            }).catch((err)=>{
+                setDone(true)
+                setError(true)
+                SetMessage(JSON.stringify(err))
             })
         }
     }

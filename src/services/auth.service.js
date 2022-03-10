@@ -15,6 +15,7 @@ class AuthService {
                     mutators('setUser', response.data);
                     const {role} = response.data.data.user_;
                     const {context} = response.data
+                    console.log('context',context)
                     if(role==='ADMIN' || role==='SUDO' || role==='AUO'){
                         globalContextService.adminContext(context)
                     }else if(role==='TECNICO'){

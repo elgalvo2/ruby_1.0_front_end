@@ -9,8 +9,8 @@ export default function Notification({setDone, setError, done, error, message}){
     
     const handleClose = ( )=>{
         console.log(message)
-        setDone(false);
-        setError(false);
+        setDone(null);
+        setError(null);
     }
 
   
@@ -21,7 +21,7 @@ export default function Notification({setDone, setError, done, error, message}){
             color='secondary' 
             siza="small" 
             onClick={handleClose}
-            color='inherit'
+
             size='small'
             aria-label='close'
 
@@ -35,7 +35,7 @@ export default function Notification({setDone, setError, done, error, message}){
     return(
         <>
             <Snackbar 
-            open={done}
+            open={(done)}
             autoHideDuration ={5000}
             onClose={handleClose}
             >
@@ -49,6 +49,7 @@ export default function Notification({setDone, setError, done, error, message}){
                     {message}
                 </Alert>
               </>}
+              
 
             </Snackbar>
 

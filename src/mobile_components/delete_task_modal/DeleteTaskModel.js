@@ -2,25 +2,24 @@ import React from "react";
 import {Dialog, DialogTitle, DialogActions, Button, Typography} from '@material-ui/core'
 import CheckIcon from '@material-ui/icons/Check'
 import CancelIcon from '@material-ui/icons/Cancel'
-import styles from './markDoneDialog.module.css'
+import styles from '../mark_done_modal/markDoneDialog.module.css'
 
-
-export default function MarkDoneDialog({open=false,folio='##-####-##',methods}){
+export default function DeleteTaskModal({open=false,folio='##-####-##',methods}){
     return(
-        <Dialog open={open} fullWidth onClose={()=>methods.handleMarkDone(false,'','')}>
+        <Dialog open={open} fullWidth onClose={()=>methods.handleDeleteTask(false,'','')}>
             <DialogTitle>
-                Desea marcar la orden {folio} como terminada? 
+                Desea eliminar la orden {folio}? 
             </DialogTitle>
             <DialogActions style={{"marginTop":"15px"}}>
                 <Button
                     className={styles.cancelB}
-                    onClick={()=>methods.handleMarkDone(false,'','')}
+                    onClick={()=>methods.handleDeleteTask(false,'','')}
                 >
                     Cancelar <CancelIcon/>
                 </Button>
                 <Button
                     className={styles.aceptarB}
-                    onClick={()=>methods.markAsDone()}
+                    onClick={()=>methods.removetask()}
                 >
                     Aceptar <CheckIcon/>
                 </Button>

@@ -10,6 +10,7 @@ import Admin_task_program from './Admin_task_program'
 import Main_register_provider from './register_provider/main_register_provider'
 import Propiedades_modal from '../config_modal/Propiedades_modal/Propiedades_modal'
 import Config_modal from '../config_modal/Config_modal';
+import TaskRelations from './tasks_relations/TaskRelations';
 
 
 import AdminService from '../../services/admin.service';
@@ -21,6 +22,7 @@ import { useGetProperties } from '../../hooks/useGetProperties';
 import { LeakAddTwoTone } from '@material-ui/icons';
 import { useManageUserForm } from '../../hooks/useManageUserForm';
 import { useManageAreaForm } from '../../hooks/useManageAreaForm';
+import { useHandleTaskRelation } from '../../hooks/useHandleTaskRelation';
 
 
 const propertyInitialProps = {
@@ -47,6 +49,23 @@ const areainitialValues = {
   technician_id: ''
 }
 
+const userInitialValues = {
+  matricula: "",
+  firstName: "",
+  lastName: "",
+  password: "",
+  confirm_password: "",
+  role: ""
+} 
+
+const initialError = {
+  matricula: '',
+  password: '',
+  confirm_password: '',
+  role: '',
+  form: ''
+}
+
 
 export default function Admin_main({ setDone, setError, setMessage }) {
   
@@ -56,8 +75,10 @@ export default function Admin_main({ setDone, setError, setMessage }) {
   
   let [data] = useGetProperties();
 
-  const [form,handleChange, error, handleMenu, passwordVisible, setPasswordVisible, handleClean, readyToSend, handleSend] = useManageUserForm();
+  const [form,handleChange, error, handleMenu, passwordVisible, setPasswordVisible, handleClean, readyToSend, handleSend] = useManageUserForm(userInitialValues,initialError,setDone, setError, setMessage );
   const [AreaForm, handleResetAreaForm, handleChangeAreaForm,handleMenusAreaForm, technicians, operators, readyToSendAreaForm, handleChek,handleSendAreaForm] = useManageAreaForm(areainitialValues,setError, setDone, setMessage);
+  const [areasCard,tecnicosCard,getTaskRelationByArea,getTaskRelationByTechnician] = useHandleTaskRelation()
+
   
   const handleSelectOwner = (event) => {
     
@@ -100,6 +121,7 @@ export default function Admin_main({ setDone, setError, setMessage }) {
 
 
 
+
   // useEffect(() => {
 
   //   const signup = () => {
@@ -132,11 +154,13 @@ export default function Admin_main({ setDone, setError, setMessage }) {
   return (
     <>
 
-      <App_bar
+      <App_bar 
+        
         Front={<Front_page />}
         window1={<Register_user_formV2 methods={{handleChange,handleMenu,setPasswordVisible, handleClean, handleSend}} props={form} visibility={passwordVisible} error={error} ready = {readyToSend}/>}
         window2={<Register_area_form methods={{handleResetAreaForm, handleChangeAreaForm, handleMenusAreaForm, handleChek, handleSendAreaForm}} props={AreaForm} operadores={operators} tecnicos={technicians} readyToSend={readyToSendAreaForm}/>}
         window3={<Config_modal props={{ propertyData, propertyOwner, send }} data={data.data} methods={{ handleToSetProperty, handleSelectOwner,setSend,handleResetForm }} />}
+        window4={<TaskRelations tecnicos={tecnicosCard} areas={areasCard} methods={{getTaskRelationByArea,getTaskRelationByTechnician}}/>}
       >
       </App_bar>
 

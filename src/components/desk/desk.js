@@ -161,8 +161,8 @@ export default function Desk(){
         <>
          <Grid container direction='row' justifyContent='flex-start'>
             <Grid item lg={12-anchor.lg} md={12} xs={12-anchor.xs}>
-                <Box style={{overflox:'scroll'}}>
-                <Desk2 methods={methods} props={props} directory = {directory} ></Desk2>
+                <Box style={{overflowY:'hidden'}}> 
+                <Desk2 methods={methods} style={{overflowY:'hidden'}} props={props} directory = {directory} ></Desk2>
                 </Box>
             </Grid>
         </Grid>
