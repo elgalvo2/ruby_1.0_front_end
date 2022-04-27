@@ -411,8 +411,6 @@ export default function Bill_create({ open, closeFunction, methods }) {
         }
 
 
-        console.log("servicios", dat.articulos)
-        console.log("order_data", order_data)
 
         return {
             unit_data,
@@ -1032,7 +1030,7 @@ espe_selected.map((sub,indez)=>{
                     <Button onClick={handleReset}>Limpiar</Button>
 
                     {(ready) && <>
-
+                        {console.log('el boton se ha montado')}
                         <Tooltip title={"crear pdf orden de compra: " + form.orden_id}>
                             <Button className={styles.crear_button} disabled={methods.send_topdf} onClick={handleSend}>Crear Orden</Button>
                         </Tooltip>

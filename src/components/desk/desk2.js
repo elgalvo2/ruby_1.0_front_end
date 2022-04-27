@@ -21,6 +21,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 //import EngineeringIcon from '@material-ui/icons/Engineering';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
+import BuildIcon from '@material-ui/icons/Build';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
@@ -47,6 +48,7 @@ import Notification from './Notification';
 
 import Grid from '@material-ui/core/Grid';
 import moduleStyles from './Estilos.module.css'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 180;
 
@@ -174,9 +176,12 @@ export default function Desk2({props, methods, directory}) {
             </IconButton>
 
             <Typography variant="h6" >
-                Signature Ruby
+                Signature
             </Typography>
             
+
+
+
                 
                 
 
@@ -185,12 +190,11 @@ export default function Desk2({props, methods, directory}) {
                 direction= 'row'
                 justifyContent='flex-end'
                 alignItems='center'
-
             >
                 
                 <Grid item>
                 {(props.logedin)?<Grid container direction='row'
-                 justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><Button onClick={methods.handleLogout} size='small' className={clsx(classes.close_session_button)}>Cerrar Sesion</Button></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>} 
+                 justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><IconButton onClick={methods.handleLogout} size='small' className={clsx(classes.close_session_button)}><ExitToAppIcon/></IconButton></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>} 
                 </Grid> 
 
             </Grid>
@@ -222,13 +226,14 @@ export default function Desk2({props, methods, directory}) {
             </div>
             <Divider />
             <List hover>
-                {['Home','Auo', "Tecnicos", "Administrador"].map((text,index)=>(
+                {['Home','Adjudicaciones','Auo', "Tecnicos", "Administrador"].map((text,index)=>(
                     <ListItem button  key={text} onClick={()=>(handleVisor(index,text))}>
                         <ListItemIcon>
                             {(text=='Home')&&<HomeIcon/>}
+                            {(text=='Adjudicaciones')&&<BookmarksIcon/>}
                             {(text=='Auo')&&<AssignmentIcon/>}
-                            {(text=='Tecnicos')&&<SettingsIcon/>}
                             {(text=='Administrador')&&<SupervisorAccountIcon/>}
+                            {(text=='Tecnicos')&&<BuildIcon/>}
                             {(open)?<ListItemText primary={text}/>:<><ListItemText primary={" "}/></>}
                         </ListItemIcon>
                     </ListItem>

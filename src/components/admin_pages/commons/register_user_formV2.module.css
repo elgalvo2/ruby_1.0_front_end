@@ -1,0 +1,71 @@
+.layout{
+    width: 400px;
+    height: fit-content;
+    border: 2px solid grey;
+    margin: 0px auto;
+    /* margin-top: 25px; */
+    padding: 10px;
+    display: grid;
+    
+    box-shadow: 1px 1px 1px #ccc,2px 2px 2px #ccc,3px 3px 3px #ccc,4px 4px 4px #ccc;
+    border-radius: 5px;
+}
+
+
+
+.formulario{
+    margin: 0px auto;
+    width: 95%;
+}
+
+.field{
+    width: 100%;
+}
+
+.password{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+.visible.visible{
+    margin-top: 10px;
+}
+
+.passwordfield.passwordfield{
+    width:90%;
+}
+
+.selector{
+    width: 50%;
+    margin: 0px auto;
+    margin-top: 10px;
+}
+
+.botones{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    
+}
+
+.limpiar.limpiar{
+    background-color:  #f59432;
+    color:#f1f1e6;
+    animation: all 200ms; 
+}
+
+.continuar.continuar{
+    background-color:  #00a5e5;
+    color:#f1f1e6;
+    animation: all 200ms; 
+}
+
+.continuar.continuar:hover{
+    
+    background-color:   #0bbaff;
+}
+
+.limpiar.limpiar:hover{
+    
+    background-color:   #ffa953;
+}

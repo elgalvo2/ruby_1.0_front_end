@@ -1,0 +1,20 @@
+.layout{
+    width: 170px;
+    height: 47px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0px auto;
+}
+
+.frame{
+    width: 44px;
+    height: 44px;
+    margin: 0px auto;
+    border-radius: 100%;
+    border: 1px solid whitesmoke;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 1px grey, 2px 2px 2px grey;
+    color: ivory;
+}

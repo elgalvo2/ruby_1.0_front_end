@@ -3,6 +3,7 @@ import Task_main from '../tasks/Task_main'
 import Main_page from '../main_page/Main_page'
 import Technicians_main_page from '../technicians_page/Technicians_main';
 import Admin_main_page from '../admin_pages/Admin_main';
+import {default as Adjudicaciones_main} from '../new_desk/New_desk'
 
 import AuthService from '../../services/auth.service'
 
@@ -12,16 +13,13 @@ import Login from '../login/Login';
 import Logout from '../logout/Logout';
 import {viewers} from '../../session/context/manager'
 import {Typography,Grid, Box, Paper} from '@material-ui/core'
+import Inmueble_form from '../bill_create/form/Inmueble_form';
+import Provider_form from '../bill_create/form/Provider_form';
+import Ejemplo_sofi from '../bill_create/form/ejemplo_sofi';
 
 
 
 export default function Desk(){
-
-
-    
-    
-
-    
 
     const [side_bar_open, setSide_bar_open] = useState(false);
     const [anchor, setAnchor] = useState({xs:'none', lg:'none',md:'none',display:'none'});
@@ -34,10 +32,22 @@ export default function Desk(){
     const [done, setDone] = useState(false);
     const [message, setMessage]= useState('');
 
+    const adjudicaciones_methods={
+        setError,
+        setDone,
+        setMessage,
+    }
+
     const tasks_main_page = <Task_main setError={setError} setDone={setDone} setMessage={setMessage}/>
     const main = <Main_page setError={setError} setDone={setDone} setMessage={setMessage}/>
     const tech_main = <Technicians_main_page setError={setError} setDone={setDone} setMessage={setMessage}/>
     const admin_main = <Admin_main_page setError={setError} setDone={setDone} setMessage={setMessage}/>
+    const adjudicaciones_main = <Adjudicaciones_main setError={setError} setDone={setDone} setMessage={setMessage}/>
+
+
+
+
+
 
 
     const [directory, setDirectory] = useState(main);
@@ -67,9 +77,10 @@ export default function Desk(){
     useEffect(()=>{
         const changePage = ()=>{
             if(index===0){setDirectory(main)};
-            if(index===1){setDirectory(tasks_main_page)};
-            if(index===2){setDirectory(tech_main)};
-            if(index===3){setDirectory(admin_main)};
+            if(index===1){setDirectory(adjudicaciones_main)};
+            if(index===2){setDirectory(tasks_main_page)};
+            if(index===3){setDirectory(tech_main)};
+            if(index===4){setDirectory(admin_main)};
         }
         changePage();
     },[index])
@@ -148,16 +159,20 @@ export default function Desk(){
 
     return(
         <>
-        <Grid container direction='row' justifyContent='flex-start'>
+         <Grid container direction='row' justifyContent='flex-start'>
             <Grid item lg={12-anchor.lg} md={12} xs={12-anchor.xs}>
-                <Box style={{overflox:'scroll'}}>
-                <Desk2 methods={methods} props={props} directory = {directory} ></Desk2>
+                <Box style={{overflowY:'hidden'}}> 
+                <Desk2 methods={methods} style={{overflowY:'hidden'}} props={props} directory = {directory} ></Desk2>
                 </Box>
             </Grid>
         </Grid>
         {(logWindow)&&<Login open={logWindow} methods ={methods}></Login>}
         {(logOutWindow)&&<Logout open={logOutWindow} methods={methods}/>}
+         
+         {/* <Inmueble_form/> */}
+         {/* <Provider_form/> */}
         
+    
         
         </>
     )

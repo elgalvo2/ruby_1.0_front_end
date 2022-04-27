@@ -1,0 +1,78 @@
+.back{
+    background-color: rgba(105, 105, 105, 0.432);
+    position: absolute;
+    height: 580px;
+    width: 100%;
+
+}
+
+.layout{
+    width: 400px;
+    height: 450px;
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+    margin: 0px auto;
+    margin-top: 50px;
+    position: relative;
+    background-color: slategray;
+    border: 2px solid black;
+    box-shadow: 0px 1px 1px rgb(133, 132, 132), 0px 2px 1px rgb(133, 132, 132),  0px 3px 1px rgb(133, 132, 132), 0px 4px 1px rgb(133, 132, 132) ;
+}
+
+.user>input, .password>input{
+    border-radius: 5px;
+}
+
+.img{
+    width: 150px;
+    height: 150px;
+    margin: 0px auto;
+    background-color:#ccc;
+    margin-top: 30px;
+    border-radius: 100%;
+    border: 1px solid black ;
+    box-shadow: inset 0px 1px 1px rgb(133, 132, 132), 0px 2px 1px rgb(133, 132, 132),  0px 3px 1px rgb(133, 132, 132), 0px 4px 1px rgb(133, 132, 132) ;
+}
+
+.user, .password{
+    
+    width: 75%;
+    margin: 0px auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+.userLabel{
+    margin-top: 15px;
+}
+
+
+
+.passwordLabel{
+    margin-top: 15px;
+}
+
+.button{
+    width: 75%;
+    margin: 0px auto;
+    margin-top: 25px;
+}
+
+.button button{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 1px rgb(133, 132, 132), 0px 2px 1px rgb(133, 132, 132),  0px 3px 1px rgb(133, 132, 132);
+    font-size: 19px;
+    letter-spacing: 2px;
+    transition: all 500ms;
+}
+
+.button button:hover{
+    box-shadow: 0px 1px 1px black, 0px 2px 1px black,  0px 3px 1px black, 0px 4px 1px black ;
+}
+
+.button button:active{
+    box-shadow: inset 0px 1px 1px rgb(133, 132, 132), 0px 2px 1px rgb(133, 132, 132),  0px 3px 1px rgb(133, 132, 132), 0px 4px 1px rgb(133, 132, 132) ;
+}

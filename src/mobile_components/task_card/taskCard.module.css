@@ -1,0 +1,27 @@
+.taskCard{
+    margin: 0px auto;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr;
+    background-color:#f1f1e6;
+    width: 95%;
+    height: 80px;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 1px 1px 1px #ccc, 2px 2px 2px #ccc, 3px 3px 3px #ccc;
+}
+
+.fecha{
+    margin-left: 5px;
+    text-align: center;
+    color:#344a53
+}
+
+.descripcion{
+    margin-left: 7px;
+    max-height: 80px;
+    overflow-x: hidden;
+    color:#344a53;
+    text-align: center;
+    word-wrap: break-word;
+}

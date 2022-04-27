@@ -40,7 +40,7 @@ function a11yProps(index) {
 
 
 
-export default function App_bar({Front,window1,window2, window3}) {
+export default function App_bar({Front,window1,window2, window3, window4}) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -63,10 +63,11 @@ export default function App_bar({Front,window1,window2, window3}) {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label='Principal' {...a11yProps(0)}/>
-          <Tab label="Registro de usuario" {...a11yProps(1)}/>
-          <Tab label="Programas mensuales" {...a11yProps(1)}/>
-          <Tab label="Registro de proveedor" {...a11yProps(3)}/>
+          {/* <Tab label='Principal' {...a11yProps(0)}/> */}
+          <Tab label="Usuarios" {...a11yProps(0)}/>
+          <Tab label="Areas" {...a11yProps(1)}/>
+          <Tab label="Propiedades" {...a11yProps(2)}/>
+          <Tab label="Relaciones de trabajo" {...a11yProps(3)}/>
 
         </Tabs>
       </AppBar>
@@ -76,17 +77,20 @@ export default function App_bar({Front,window1,window2, window3}) {
         onChangeIndex={handleChangeIndex}
       >
         
-        <TabPanel value={value} index={0} dir={'ltr'}>
+        {/* <TabPanel value={value} index={0} dir={'ltr'}>
           {Front}
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={'ltr'}>
+        </TabPanel> */}
+        <TabPanel value={value} index={0} dir={'ltr'}>
           {window1}
         </TabPanel>
-        <TabPanel value={value} index={2} dir={'ltr'}>
+        <TabPanel value={value} index={1} dir={'ltr'}>
           {window2}
         </TabPanel>
-        <TabPanel value={value} index={3} dir={'ltr'}>
+        <TabPanel value={value} index={2} dir={'ltr'}>
           {window3}
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={'ltr'}>
+          {window4}
         </TabPanel>
       </SwipeableViews>
     </Box>

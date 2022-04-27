@@ -1,0 +1,40 @@
+.layout{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    margin: 0px auto;
+    width: 850px;
+    height: 300px;
+    background-color: #FDFFF7;
+}
+
+.inmueble{
+    background-color: #26C485;
+    padding: 15px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    min-height: 80px;
+
+}
+.propertyContainer{
+    margin: 0px auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.propertyDataContainer{
+    background-color: #011936;
+    padding: 15px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    
+}
+
+.propertyDataContainer>div:first-child{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.propertyDataContainer>div:nth-child(2){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

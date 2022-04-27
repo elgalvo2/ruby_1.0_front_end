@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {AppBar,Box, Toolbar, Typography, Button, IconButton,Grid} from '@material-ui/core';
+import {AppBar,Box, Toolbar, Typography, Button, IconButton,Icon,Grid} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 
 
@@ -33,7 +34,7 @@ export default function App_Bar({methods, props, session_user}) {
                 </Grid>
                 <Grid item lg={2} md={2} xs={2}>
                     {console.log(props.logedin)}
-                   {(props.logedin)?<Grid container direction='row' justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><Button onClick={methods.handleLogout}>Cerrar Sesion</Button></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>}
+                   {(props.logedin)?<Grid container direction='row' justifyContent="center" alignItems='center'  spacing={.5}> <Grid item lg={5}>Hola, {props.session_user.firstName}.</Grid> <Grid item lg={1} ><IconButton onClick={methods.handleLogout}><ExitToAppIcon/></IconButton></Grid></Grid>:<Button color="inherit" onClick={methods.handleLogin} >Login</Button>}
                 </Grid>
 
             </Grid>

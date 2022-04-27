@@ -1,0 +1,24 @@
+.layout{
+    margin: 0px auto;
+    margin-top: 10px;
+    width: 800px;
+    min-height: 420px;
+    background-color: #eaeaeec7;
+    border-radius: 10px;
+}
+.tableHeader{
+    display: grid;
+    padding-left: 20px;
+    grid-template-columns: 1fr 2fr 3fr 1fr ;
+    margin: 0px auto;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.tableHeader p:nth-child(3){
+    margin-left: 11px;
+    margin-top: 25px;
+}
+.tableHeader p:nth-child(2){
+    margin-top: 25px;
+}

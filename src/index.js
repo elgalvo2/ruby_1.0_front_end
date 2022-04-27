@@ -7,9 +7,9 @@ import initSession from'./session/context/session_init'
 
 initSession();
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  
+    <App />,
+  
   document.getElementById('root')
 );
 

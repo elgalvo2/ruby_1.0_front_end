@@ -52,7 +52,7 @@ export default function Register_provider_form(){
     return(
         <Grid container direction='column' alingItems='center' justifyContent='center' component={Paper} elevation={3} spacing={5}>
             <Grid item lg={5} md={5} >
-                <Typography>Registro de Proveedor</Typography>
+                <Typography>Registrar de Propiedad</Typography>
                 <FormControl>
                     <TextField 
                         margin='dense'
